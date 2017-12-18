@@ -19,16 +19,20 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {AppsPage} from "../pages/apps/apps";
 import {AccountPage} from "../pages/account/account";
+import {LoginPage} from "../pages/login/login";
+import {SharedModule} from "../components/shared.module";
 
 @NgModule({
   declarations: [
     MyApp,
     AppsPage,
     AccountPage,
+    LoginPage,
     TabsPage
   ],
   imports: [
     BrowserModule,
+    SharedModule,
     IonicModule.forRoot(MyApp),
     HttpModule,
     TranslateModule.forRoot({
@@ -44,6 +48,7 @@ import {AccountPage} from "../pages/account/account";
     MyApp,
     AppsPage,
     AccountPage,
+    LoginPage,
     TabsPage
   ],
   providers: [
