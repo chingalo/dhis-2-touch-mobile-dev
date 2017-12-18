@@ -1,0 +1,24 @@
+{
+  "innovation_in_every_dimension" : "Innovation in every dimension",
+  "establishing_connection_to_server" : "Establishing connection to server",
+  "aggregate_metadata" : "Aggregate metadata",
+  "Event_and_tracker_metadata" : "Event & tracker metadata",
+  "report_metadata" : "Report metadata",
+  "enter_server_address" :"Enter server address",
+  "enter_username" : "Enter username",
+  "enter_password" : "Enter password",
+  "login" : "Login",
+  "powered_by" : "Powered by",
+  "dashboard" : "Dashboard",
+  "dashboard_list" : "Dashboard list",
+  "about" : "About",
+  "system_info" : "System info",
+  "profile" : "Profile",
+  "user_information" : "User information",
+  "assigned_organisation_units" : "Assigned organisation units",
+  "assigned_roles" : "Assigned roles",
+  "assigned_program" : "Assigned program",
+  "assigned_form" : "Assigned form",
+  "no_data_to_display" : "No data to display"
+}
+
