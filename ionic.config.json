@@ -1,0 +1,8 @@
+{
+  "name": "dhis-2-touch",
+  "app_id": "",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
