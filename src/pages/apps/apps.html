@@ -7,12 +7,80 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title>apps</ion-title>
+    <ion-title>{{'apps' |translate}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <ion-grid>
+    <ion-row >
 
+      <ion-col col-4 (tap)="goToView('DataEntryPage')">
+        <div class="apps-contents" padding>
+          <ion-thumbnail >
+            <img class="menu-app-icon-list" src="assets/icon/data-entry.png">
+          </ion-thumbnail>
+          <p class="menu-app" >Data Entry</p>
+        </div>
+
+      </ion-col>
+
+      <ion-col col-4 (tap)="goToView()" >
+        <div class="apps-contents" padding>
+          <ion-thumbnail >
+            <img class="menu-app-icon-list" src="assets/icon/event-capture.png">
+          </ion-thumbnail>
+          <p class="menu-app" >Event Capture</p>
+        </div>
+      </ion-col>
+
+      <ion-col col-4 (tap)="goToView()"  >
+        <div class="apps-contents" padding>
+          <ion-thumbnail >
+            <img class="menu-app-icon-list" src="assets/icon/reports.png">
+          </ion-thumbnail>
+          <p class="menu-app">Reports</p>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-4 (tap)="goToView()" >
+        <div class="apps-contents" padding>
+          <ion-thumbnail >
+            <img class="menu-app-icon-list" src="assets/icon/dashboard.png">
+          </ion-thumbnail>
+          <p class="menu-app">Dashboard</p>
+        </div>
+      </ion-col>
+      <ion-col col-4 (tap)="goToView()" >
+        <div class="apps-contents" padding>
+          <ion-thumbnail >
+            <img class="menu-app-icon-list" src="assets/icon/tracker-capture.png">
+          </ion-thumbnail>
+          <p class="menu-app">Tracker Capture</p>
+        </div>
+      </ion-col>
+      <ion-col col-4 (tap)="goToView()" >
+        <div class="apps-contents" padding>
+          <ion-thumbnail >
+            <img class="menu-app-icon-list" src="assets/icon/sync.png">
+          </ion-thumbnail>
+          <p class="menu-app" >Sync</p>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-4 (tap)="goToView()" >
+        <div class="apps-contents" padding>
+          <ion-thumbnail >
+            <img class="menu-app-icon-list" src="assets/icon/settings.png">
+          </ion-thumbnail>
+          <p class="menu-app" >Settings</p>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

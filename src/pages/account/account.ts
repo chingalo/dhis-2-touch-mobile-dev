@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import {Component, OnInit} from '@angular/core';
+import {App,} from 'ionic-angular';
+import {LoginPage} from "../login/login";
 
 /**
  * Generated class for the AccountPage page.
@@ -12,13 +13,31 @@ import { NavController, NavParams } from 'ionic-angular';
   selector: 'page-account',
   templateUrl: 'account.html',
 })
-export class AccountPage {
+export class AccountPage implements OnInit{
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private app : App,) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AccountPage');
+  ngOnInit(){
+
+  }
+
+  goToView(){
+
+  }
+
+  async logOut(){
+    try{
+      // let user :any = await this.UserProvider.getCurrentUser();
+      // user.isLogin = false;
+      // this.UserProvider.setCurrentUser(user).then(()=>{
+      //   this.organisationUnitProvider.resetOrganisationUnit();
+      //   this.app.getRootNav().setRoot('LoginPage');
+      // })
+      this.app.getRootNav().setRoot(LoginPage);
+    }catch (e){
+      console.log(JSON.stringify(e));
+    }
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 /**
@@ -12,13 +12,17 @@ import { NavController, NavParams } from 'ionic-angular';
   selector: 'page-apps',
   templateUrl: 'apps.html',
 })
-export class AppsPage {
+export class AppsPage implements OnInit{
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AppsPage');
+  ngOnInit(){
+
+  }
+
+  goToView(){
+
   }
 
 }
