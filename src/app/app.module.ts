@@ -4,7 +4,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 
-// Multilanguage
+// Multi-language
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { Http, HttpModule } from '@angular/http';
@@ -21,6 +21,7 @@ import {AppsPage} from "../pages/apps/apps";
 import {AccountPage} from "../pages/account/account";
 import {LoginPage} from "../pages/login/login";
 import {SharedModule} from "../components/shared.module";
+import {LauncherPage} from "../pages/launcher/launcher";
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import {SharedModule} from "../components/shared.module";
     AppsPage,
     AccountPage,
     LoginPage,
+    LauncherPage,
     TabsPage
   ],
   imports: [
@@ -49,6 +51,7 @@ import {SharedModule} from "../components/shared.module";
     AppsPage,
     AccountPage,
     LoginPage,
+    LauncherPage,
     TabsPage
   ],
   providers: [

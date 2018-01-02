@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 /**
  * Generated class for the ProgressBarComponent component.
@@ -12,11 +12,17 @@ import { Component } from '@angular/core';
 })
 export class ProgressBarComponent {
 
-  text: string;
+  @Input() progressBar;
+  @Input() progressBarTitle;
+  @Output() isProcessActive = new EventEmitter();
 
   constructor() {
-    console.log('Hello ProgressBarComponent Component');
-    this.text = 'Hello World';
   }
+
+  cancelRunningProcess(){
+    this.isProcessActive.emit({isProcessActive : false});
+  }
+
+
 
 }

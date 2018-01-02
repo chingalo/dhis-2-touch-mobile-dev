@@ -1,20 +1,59 @@
-<!--
-  Generated template for the LoginPage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
+<ion-content  class="login">
 
-  <ion-navbar>
-    <ion-title>login</ion-title>
-  </ion-navbar>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="topSLogan">
+        <div class="logo">
+          <img [src]="logoUrl" >
+        </div>
+        <p >{{'innovation_in_every_dimension'|translate }}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="isLoginProcessActive">
+      <ion-col>
+        <progress-bar
+          [progressBarTitle] = "loginInstance"
+          [progressBar] = "progressBar"
+          (isProcessActive)="updateProcessStatus($event)">
+        </progress-bar>
+      </ion-col>
+    </ion-row>
+    <div *ngIf="!isLoginProcessActive">
+      <form (ngSubmit)="startLoginProcess()" class="animated bounce shake">
+        <ion-row >
+          <ion-col >
+            <ion-item>
+              <ion-input [(ngModel)]="currentUser.serverUrl" type="text" name ="serverUrl" placeholder="Enter server address"></ion-input>
+            </ion-item>
 
-</ion-header>
+            <ion-item>
+              <ion-input [(ngModel)]="currentUser.username" type="text" name ="username" placeholder="Enter username"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input [(ngModel)]="currentUser.password" name ="password" type="password" placeholder="Enter password"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row >
+          <ion-col>
+            <button type="submit" class="normalButton" ion-button full text-capitalize>
+              Login
+            </button>
+          </ion-col>
+        </ion-row>
+      </form>
+    </div>
+
+    <ion-row>
+      <ion-col class="bottomSLogan">
+        <p>{{'powered_by'|translate}} HISPTZ</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 
-<ion-content padding>
-
-  <progress-bar></progress-bar>
 
 </ion-content>
