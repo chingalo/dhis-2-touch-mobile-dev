@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MenuController, NavController} from 'ionic-angular';
+import {TabsPage} from "../tabs/tabs";
 
 /**
  * Generated class for the LoginPage page.
@@ -61,13 +62,15 @@ export class LoginPage implements OnInit{
 
   updateProgress(){
     let value = parseInt(this.progressBar);
-    value += 5;
+    value += 2;
     if(value <=100){
       this.progressBar = String(value);
       this.loginInstance = "dhis.moh.go.tz";
       setTimeout(()=>{
         this.updateProgress();
       },1000)
+    }else{
+      this.navCtrl.setRoot(TabsPage);
     }
   }
 

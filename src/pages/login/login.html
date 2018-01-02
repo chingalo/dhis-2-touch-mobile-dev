@@ -19,6 +19,12 @@
         </progress-bar>
       </ion-col>
     </ion-row>
+    <ion-row *ngIf="isLoginProcessActive" [ngClass]="animationEffect.progressBar">
+      <ion-col>
+        <app-features-slide></app-features-slide>
+      </ion-col>
+    </ion-row>
+
     <div *ngIf="!isLoginProcessActive">
       <form (ngSubmit)="startLoginProcess()" [ngClass]="animationEffect.loginForm" >
         <ion-row >

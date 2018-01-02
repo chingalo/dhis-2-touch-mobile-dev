@@ -11,6 +11,7 @@ progress-bar {
   .progress-inner {
     min-width: 30px;
     white-space: nowrap;
+    text-align: left;
     overflow: hidden;
     color : map_get($colors,dark);
     font-size: 18px;
