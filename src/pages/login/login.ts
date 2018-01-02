@@ -18,12 +18,17 @@ export class LoginPage implements OnInit{
   progressBar : string;
   loginInstance : string;
   isLoginProcessActive : boolean;
-  currentUser : any;
+  currentUser : any = {};
+  animationEffect : any = {};
 
   constructor(private navCtrl: NavController,private menu : MenuController,) {
   }
 
   ngOnInit(){
+    this.animationEffect = {
+      loginForm : "animated slideInUp",
+      progressBar : "animated bounceIn"
+    };
     this.currentUser = {
       serverUrl : "play.hisptz.org/27",
       username : "admin",
@@ -38,14 +43,21 @@ export class LoginPage implements OnInit{
     this.progressBar = "0";
     this.loginInstance = this.currentUser.serverUrl;
     this.isLoginProcessActive = true;
+    this.animationEffect.loginForm = "animated slideOut";
+    this.animationEffect.progressBar = "animated bounceIn";
     setTimeout(()=>{
       this.updateProgress();
     },1000);
   }
 
   updateProcessStatus(data){
-    this.isLoginProcessActive = data.isProcessActive;
-  }
+    this.animationEffect.progressBar = "animated bounceOut";
+    this.animationEffect.loginForm = "animated flipInY";
+    setTimeout(()=>{
+      this.isLoginProcessActive = data.isProcessActive;
+    },300);
+
+   }
 
   updateProgress(){
     let value = parseInt(this.progressBar);

@@ -3,7 +3,7 @@
 
   <ion-grid>
     <ion-row>
-      <ion-col class="topSLogan">
+      <ion-col class="topSLogan animated bounceIn">
         <div class="logo">
           <img [src]="logoUrl" >
         </div>
@@ -11,7 +11,7 @@
       </ion-col>
     </ion-row>
     <ion-row *ngIf="isLoginProcessActive">
-      <ion-col>
+      <ion-col [ngClass]="animationEffect.progressBar">
         <progress-bar
           [progressBarTitle] = "loginInstance"
           [progressBar] = "progressBar"
@@ -20,7 +20,7 @@
       </ion-col>
     </ion-row>
     <div *ngIf="!isLoginProcessActive">
-      <form (ngSubmit)="startLoginProcess()" class="animated bounce shake">
+      <form (ngSubmit)="startLoginProcess()" [ngClass]="animationEffect.loginForm" >
         <ion-row >
           <ion-col >
             <ion-item>
