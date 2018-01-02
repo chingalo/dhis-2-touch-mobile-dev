@@ -13,11 +13,11 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content >
   <ion-grid>
-    <ion-row >
+    <ion-row class="animated slideInDown">
 
-      <ion-col col-4 (tap)="goToView('DataEntryPage')">
+      <ion-col col-4 (tap)="goToView()">
         <div class="apps-contents" padding>
           <ion-thumbnail >
             <img class="menu-app-icon-list" src="assets/icon/data-entry.png">
@@ -46,7 +46,7 @@
       </ion-col>
     </ion-row>
 
-    <ion-row>
+    <ion-row class="animated slideInUp">
       <ion-col col-4 (tap)="goToView()" >
         <div class="apps-contents" padding>
           <ion-thumbnail >
@@ -72,7 +72,8 @@
         </div>
       </ion-col>
     </ion-row>
-    <ion-row>
+
+    <ion-row class="animated slideInDown">
       <ion-col col-4 (tap)="goToView()" >
         <div class="apps-contents" padding>
           <ion-thumbnail >
@@ -82,5 +83,6 @@
         </div>
       </ion-col>
     </ion-row>
+
   </ion-grid>
 </ion-content>
