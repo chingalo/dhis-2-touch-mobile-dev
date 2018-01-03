@@ -1,6 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {MenuController, NavController} from 'ionic-angular';
+import { NavController} from 'ionic-angular';
 import {LoginPage} from "../login/login";
+import {TabsPage} from "../tabs/tabs";
+import {UserProvider} from "../../providers/user/user";
+import {DashboardServiceProvider} from "../../providers/dashboard-service/dashboard-service";
+import {NetworkAvailabilityProvider} from "../../providers/network-availability/network-availability";
+import {BackgroundMode} from "@ionic-native/background-mode";
 
 /**
  * Generated class for the LauncherPage page.
@@ -14,18 +19,28 @@ import {LoginPage} from "../login/login";
   templateUrl: 'launcher.html',
 })
 export class LauncherPage implements OnInit{
-
   logoUrl : string;
 
-  constructor(private navCtrl: NavController,private menu : MenuController,) {
+  constructor(private navCtrl: NavController,
+              private UserProvider : UserProvider,
+              private DashboardServiceProvider : DashboardServiceProvider,
+              private NetworkAvailabilityProvider : NetworkAvailabilityProvider,
+              private backgroundMode: BackgroundMode) {
   }
 
   ngOnInit(){
-    this.menu.enable(false);
     this.logoUrl = 'assets/img/logo.png';
-    setTimeout(()=> {
-      this.navCtrl.setRoot(LoginPage);
-    },1000)
+    this.backgroundMode.enable();
+    this.NetworkAvailabilityProvider.setNetworkStatusDetection();
+    this.DashboardServiceProvider.resetDashboards();
+    this.UserProvider.getCurrentUser().then((user : any)=>{
+      if(user && user.isLogin){
+        this.navCtrl.setRoot(TabsPage);
+      }else{
+        this.navCtrl.setRoot(LoginPage);
+      }
+    },error=>{
+    });
   }
 
 }

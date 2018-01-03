@@ -12,6 +12,7 @@ import {BackgroundMode} from "@ionic-native/background-mode";
 import {SMS} from "@ionic-native/sms";
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import {IonicStorageModule} from "@ionic/storage";
 
 // Multi-language
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -86,6 +87,7 @@ import {DataSetCompletenessProvider} from "../providers/data-set-completeness/da
 import {TrackerCaptureProvider} from "../providers/tracker-capture/tracker-capture";
 import {TrackedEntityInstancesProvider} from "../providers/tracked-entity-instances/tracked-entity-instances";
 
+
 @NgModule({
   declarations: [
     MyApp,
@@ -99,6 +101,7 @@ import {TrackedEntityInstancesProvider} from "../providers/tracked-entity-instan
     BrowserModule,
     SharedModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
     HttpModule,
     TranslateModule.forRoot({
       loader: {

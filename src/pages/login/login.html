@@ -13,9 +13,9 @@
     <ion-row *ngIf="isLoginProcessActive">
       <ion-col [ngClass]="animationEffect.progressBar">
         <progress-bar
-          [progressBarTitle] = "loginInstance"
+          [progressBarTitle] = "loggedInInInstance"
           [progressBar] = "progressBar"
-          (isProcessActive)="updateProcessStatus($event)">
+          (isProcessActive)="cancelLoginProcess($event)">
         </progress-bar>
       </ion-col>
     </ion-row>
