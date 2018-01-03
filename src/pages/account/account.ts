@@ -17,24 +17,38 @@ import {OrganisationUnitsProvider} from "../../providers/organisation-units/orga
 })
 export class AccountPage implements OnInit{
 
+  animationEffect : any;
+
   constructor(private app : App,private organisationUnitProvider : OrganisationUnitsProvider, private userProvider : UserProvider) {
   }
 
   ngOnInit(){
-
+    this.animationEffect = {
+      profile : "",
+      about : "",
+      help : "",
+      logout : ""
+    }
   }
 
-  goToView(){
+  goToView(key){
+    this.applyAnimation(key);
+  }
 
+  applyAnimation(key : any){
+    this.animationEffect[key] = "animated bounceIn";
+    setTimeout(()=>{
+      this.animationEffect[key] = "";
+    },3000);
   }
 
   async logOut(){
     try{
+      this.applyAnimation('logout');
       let user :any = await this.userProvider.getCurrentUser();
       user.isLogin = false;
       this.userProvider.setCurrentUser(user).then(()=>{
         this.organisationUnitProvider.resetOrganisationUnit();
-        this.app.getRootNav().setRoot('LoginPage');
       });
       this.app.getRootNav().setRoot(LoginPage);
     }catch (e){

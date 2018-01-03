@@ -18,41 +18,41 @@
   <ion-grid>
 
     <ion-row class="animated slideInUp" >
-      <ion-col col-4 (tap)="goToView()" >
+      <ion-col [ngClass] = "animationEffect.profile" col-4 (tap)="goToView('profile')" >
         <div class="apps-contents" padding>
           <ion-thumbnail >
             <img class="menu-app-icon-list" src="assets/icon/profile.png">
           </ion-thumbnail>
-          <p class="menu-app" >Profile</p>
+          <p class="menu-app" >{{'profile'|translate}}</p>
         </div>
       </ion-col>
-      <ion-col col-4 (tap)="goToView()" >
+      <ion-col [ngClass] = "animationEffect.about" col-4 (tap)="goToView('about')" >
         <div class="apps-contents" padding>
           <ion-thumbnail >
             <img class="menu-app-icon-list" src="assets/icon/about.png">
           </ion-thumbnail>
-          <p class="menu-app" >About</p>
+          <p class="menu-app" >{{'about'|translate}}</p>
         </div>
       </ion-col>
 
-      <ion-col col-4 (tap)="goToView()" >
+      <ion-col [ngClass] = "animationEffect.help" col-4 (tap)="goToView('help')" >
         <div class="apps-contents" padding>
           <ion-thumbnail >
             <img class="menu-app-icon-list" src="assets/icon/help.png">
           </ion-thumbnail>
-          <p class="menu-app" >Help</p>
+          <p class="menu-app" >{{'help'|translate}}</p>
         </div>
       </ion-col>
 
     </ion-row>
 
     <ion-row class="animated slideInDown">
-      <ion-col col-4 (tap)="logOut()" >
+      <ion-col [ngClass] = "animationEffect.logout" col-4 (tap)="logOut()" >
         <div class="apps-contents" padding>
           <ion-thumbnail >
             <img class="menu-app-icon-list" src="assets/icon/logout.png">
           </ion-thumbnail>
-          <p class="menu-app" >Logout</p>
+          <p class="menu-app" >{{'logout'|translate}}</p>
         </div>
       </ion-col>
 

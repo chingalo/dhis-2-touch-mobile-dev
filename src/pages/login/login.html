@@ -25,9 +25,10 @@
       </ion-col>
     </ion-row>
 
+
     <div *ngIf="!isLoginProcessActive">
       <form (ngSubmit)="startLoginProcess()" [ngClass]="animationEffect.loginForm" >
-        <ion-row >
+        <ion-row>
           <ion-col >
             <ion-item>
               <ion-input [(ngModel)]="currentUser.serverUrl" type="text" name ="serverUrl" placeholder="Enter server address"></ion-input>
