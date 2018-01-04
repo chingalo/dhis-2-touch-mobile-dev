@@ -51,14 +51,14 @@ export class AppsPage implements OnInit{
       }else if(key == "settings"){
         console.log(key);
       }
-    },200);
+    },150);
   }
 
   applyAnimation(key : any){
     this.animationEffect[key] = "animated bounceIn";
     setTimeout(()=>{
       this.animationEffect[key] = "";
-    },1000);
+    },500);
   }
 
 }

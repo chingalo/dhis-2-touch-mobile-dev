@@ -41,7 +41,7 @@ export class AccountPage implements OnInit{
       }else if(key == "help"){
         this.setView('HelpPage');
       }
-    },200);
+    },150);
   }
   setView(viewName){
     this.navCtrl.push(viewName).then(()=>{})
@@ -51,7 +51,7 @@ export class AccountPage implements OnInit{
     this.animationEffect[key] = "animated bounceIn";
     setTimeout(()=>{
       this.animationEffect[key] = "";
-    },3000);
+    },500);
   }
 
   async logOut(){

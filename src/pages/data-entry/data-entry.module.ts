@@ -4,6 +4,7 @@ import { DataEntryPage } from './data-entry';
 import {SharedModule} from "../../components/shared.module";
 import {TranslateModule} from "@ngx-translate/core";
 
+
 @NgModule({
   declarations: [
     DataEntryPage,
