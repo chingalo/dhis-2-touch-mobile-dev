@@ -243,7 +243,7 @@ export class DataEntryPage implements OnInit{
       period : {iso : this.selectedPeriod.iso, name : this.selectedPeriod.name },
       dataDimension : this.getDataDimensions()
     };
-    //this.navCtrl.push('DataEntryFormPage',{parameter : parameter});
+    this.navCtrl.push('DataEntryFormPage',{parameter : parameter});
   }
 
   getDataDimensions(){

@@ -16,7 +16,7 @@
 <ion-content >
   <ion-grid>
     <ion-row>
-      <ion-col class="animated bounceIn">
+      <ion-col class="animated fadeIn">
         <div class="item-card" color="font-color" padding-top padding-bottom ion-button clear full text-center text-capitalize (tap)="openOrganisationUnitTree()" >
           <img  class="side-menu-icon" [src]="icons.orgUnit"/>&nbsp;&nbsp;
           {{ organisationUnitLabel|translate }}
@@ -47,13 +47,13 @@
           </div>
         </div>
         <div *ngIf="isFormReady" class="item-card animated fadeIn" padding-top padding-bottom full (tap)="openDataEntryForm()">
-          <div><b>Organisation Unit</b> : {{ organisationUnitLabel }}<br>
-            <b>Form</b> : {{ dataSetLabel }}<br>
-            <b>Period</b> : {{ periodLabel }}
+          <div><b>{{'organisation_unit' |translate}}</b> : {{ organisationUnitLabel|translate }}<br>
+            <b>{{'form'|translate }}</b> : {{ dataSetLabel|translate}}<br>
+            <b>{{'period'|translate}}</b> : {{ periodLabel|translate}}
           </div>
           <div class="item-card" color="font-color"  ion-button clear full text-center text-capitalize >
             <img  class="side-menu-icon" [src]="icons.goToDataEntryForm"/>&nbsp;&nbsp;
-            Enter data
+            {{'enter_data'|translate}}
           </div>
         </div>
       </ion-col>

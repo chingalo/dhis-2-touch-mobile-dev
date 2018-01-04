@@ -65,7 +65,7 @@ export class LoginPage implements OnInit {
   ngOnInit() {
     this.animationEffect = {
       loginForm: "animated slideInUp",
-      progressBar: "animated bounceIn"
+      progressBar: "animated fadeIn"
     };
     this.logoUrl = 'assets/img/logo.png';
     this.cancelLoginProcess(this.cancelLoginProcessData);
@@ -93,8 +93,8 @@ export class LoginPage implements OnInit {
     this.processCount.saved = 0;
     this.loggedInInInstance = this.currentUser.serverUrl;
     this.isLoginProcessActive = true;
-    this.animationEffect.loginForm = "animated slideOut";
-    this.animationEffect.progressBar = "animated bounceIn";
+    this.animationEffect.loginForm = "animated fadeOut";
+    this.animationEffect.progressBar = "animated fadeIn";
     if(this.currentUser.serverUrl && this.currentUser.username && this.currentUser.password){
       this.currentResourceType = "communication";
       this.progressTracker = {};
@@ -462,8 +462,8 @@ export class LoginPage implements OnInit {
   }
 
   cancelLoginProcess(data) {
-    this.animationEffect.progressBar = "animated bounceOut";
-    this.animationEffect.loginForm = "animated flipInX";
+    this.animationEffect.progressBar = "animated fadeOut";
+    this.animationEffect.loginForm = "animated fadeIn";
     setTimeout(() => {
       this.isLoginProcessActive = data.isProcessActive;
     }, 300);

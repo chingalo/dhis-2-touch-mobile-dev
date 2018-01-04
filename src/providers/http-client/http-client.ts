@@ -78,9 +78,10 @@ export class HttpClientProvider {
     headers.append('Authorization', 'Basic ' +user.authorizationKey);
     return new Promise((resolve, reject)=> {
       this.defaultHttp.post(user.serverUrl + url, data, { headers: headers }).timeout(this.timeOutTime).subscribe((response : any)=>{
-        resolve(response.json());
+        resolve();
       },error=>{
-        reject(error.json());
+        console.error(JSON.stringify(error));
+        reject(error);
       });
     });
   }
@@ -102,7 +103,7 @@ export class HttpClientProvider {
         .subscribe((response)=>{
           resolve(response);
         },error=>{
-          reject(error.json());
+          reject(error);
         });
     });
   }
