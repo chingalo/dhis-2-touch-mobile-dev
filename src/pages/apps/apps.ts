@@ -49,7 +49,7 @@ export class AppsPage implements OnInit{
       }else if(key == "sync"){
         this.setView('SyncPage')
       }else if(key == "settings"){
-        console.log(key);
+        this.setView('SettingsPage');
       }
     },150);
   }
