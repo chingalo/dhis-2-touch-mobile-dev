@@ -20,6 +20,7 @@ export class DataEntryPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DataEntryPage');
+    //{{'data_entry'|translate}}
   }
 
 }

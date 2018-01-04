@@ -29,18 +29,36 @@ export class AppsPage implements OnInit{
       sync : "",
       settings : ""
     }
-
   }
 
   goToView(key){
     this.applyAnimation(key);
+    setTimeout(()=>{
+      if(key == "data_entry"){
+        this.navCtrl.push('DataEntryPage');
+      }else if(key == "event_capture"){
+        console.log(key);
+      }else if(key == "event_capture"){
+        console.log(key);
+      }else if(key == "reports"){
+        console.log(key);
+      }else if(key == "dashboard"){
+        console.log(key);
+      }else if(key == "tracker_capture"){
+        console.log(key);
+      }else if(key == "sync"){
+        console.log(key);
+      }else if(key == "settings"){
+        console.log(key);
+      }
+    },200);
   }
 
   applyAnimation(key : any){
     this.animationEffect[key] = "animated bounceIn";
     setTimeout(()=>{
       this.animationEffect[key] = "";
-    },3000);
+    },1000);
   }
 
 }

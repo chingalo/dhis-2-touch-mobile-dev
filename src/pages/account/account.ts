@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {App,} from 'ionic-angular';
+import {App, NavController,} from 'ionic-angular';
 import {LoginPage} from "../login/login";
 import {UserProvider} from "../../providers/user/user";
 import {OrganisationUnitsProvider} from "../../providers/organisation-units/organisation-units";
@@ -19,7 +19,7 @@ export class AccountPage implements OnInit{
 
   animationEffect : any;
 
-  constructor(private app : App,private organisationUnitProvider : OrganisationUnitsProvider, private userProvider : UserProvider) {
+  constructor(private navCtrl : NavController,private app : App,private organisationUnitProvider : OrganisationUnitsProvider, private userProvider : UserProvider) {
   }
 
   ngOnInit(){
@@ -33,6 +33,18 @@ export class AccountPage implements OnInit{
 
   goToView(key){
     this.applyAnimation(key);
+    setTimeout(()=>{
+      if(key == "profile"){
+        this.setView("ProfilePage");
+      }else if(key == "about"){
+        this.setView('AboutPage');
+      }else if(key == "help"){
+        this.setView('HelpPage');
+      }
+    },200);
+  }
+  setView(viewName){
+    this.navCtrl.push(viewName).then(()=>{})
   }
 
   applyAnimation(key : any){
