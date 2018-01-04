@@ -40,7 +40,7 @@ export class AppsPage implements OnInit{
       }else if(key == "event_capture"){
         this.setView('EventCapturePage');
       }else if(key == "reports"){
-        console.log(key);
+        this.setView('ReportsPage');
       }else if(key == "dashboard"){
         this.appProvider.setNormalNotification('This has been disabled')
       }else if(key == "tracker_capture"){

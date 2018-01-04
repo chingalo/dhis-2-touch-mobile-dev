@@ -92,6 +92,9 @@
   "enrolling_program" : "Enrolling Program",
   "list_of_widgets" : "List of widgets",
   "report" : "Reports",
+  "report_name" : "Report name",
+  "report_view":"Report View",
+  "generate_report" : "Generate Report",
   "help_search" : "Help search",
   "search_help_by_title" : "Search help by title",
   "dashboard_list" : "Dashboard list",
@@ -112,6 +115,7 @@
   "prepare_entry_form" : "Prepare entry form",
   "loading_data_from_the_server" : "Loading data from the server",
   "saving_data_from_server" : "Saving data from server",
+  "loading_report_metadata" : "Loading report metadata",
   "loading_available_local_data" : "Loading available local data",
   "loading_entry_form_completeness_information" : "Loading entry form completeness information",
   "loading_app_information" : "Loading app information",
@@ -126,6 +130,11 @@
   "there_is_nothing_to_select" : "There is nothing to select",
   "there_no_data_at_the_moment" : "There no data at the moment",
   "there_is_no_program_to_select" : "There is no program to select",
-  "there_is_no_widget_to_select" : "There is no widget to select"
+  "there_is_no_report_to_select" : "There is no report to select",
+  "there_is_no_widget_to_select" : "There is no widget to select",
+  "loading_reports" : "Loading reports",
+  "downloading_reports_from_server" : "Downloading reports from the server",
+  "prepare_local_storage_for_updates" : "Prepare local storage for updates",
+  "saving_reports_from_server" : "Saving reports from server"
 }
 
