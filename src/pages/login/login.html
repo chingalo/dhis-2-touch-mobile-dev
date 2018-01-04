@@ -31,15 +31,15 @@
         <ion-row>
           <ion-col >
             <ion-item>
-              <ion-input [(ngModel)]="currentUser.serverUrl" type="text" name ="serverUrl" placeholder="Enter server address"></ion-input>
+              <ion-input [(ngModel)]="currentUser.serverUrl" type="text" name ="serverUrl" placeholder="{{'enter_server_address'|translate}}"></ion-input>
             </ion-item>
 
             <ion-item>
-              <ion-input [(ngModel)]="currentUser.username" type="text" name ="username" placeholder="Enter username"></ion-input>
+              <ion-input [(ngModel)]="currentUser.username" type="text" name ="username" placeholder="{{'enter_username'|translate}}"></ion-input>
             </ion-item>
 
             <ion-item>
-              <ion-input [(ngModel)]="currentUser.password" name ="password" type="password" placeholder="Enter password"></ion-input>
+              <ion-input [(ngModel)]="currentUser.password" name ="password" type="password" placeholder="{{'enter_password'|translate}}"></ion-input>
             </ion-item>
           </ion-col>
         </ion-row>
@@ -47,7 +47,7 @@
         <ion-row >
           <ion-col>
             <button type="submit" class="normalButton" ion-button full text-capitalize>
-              Login
+              {{'login'|translate}}
             </button>
           </ion-col>
         </ion-row>

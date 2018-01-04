@@ -18,7 +18,7 @@ export class DataDimensionSelectionPage  implements OnInit{
   categoryOptions : any;
   currentSelection : any;
   icon : string;
-  title : string = "Data Dimension selection";
+  title : string = "data_dimension_selection";
 
 
   constructor(private navParams: NavParams,private  viewCtrl : ViewController) {
