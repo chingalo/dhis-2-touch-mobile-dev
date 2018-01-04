@@ -35,7 +35,7 @@ export class AppsPage implements OnInit{
     this.applyAnimation(key);
     setTimeout(()=>{
       if(key == "data_entry"){
-        this.navCtrl.push('DataEntryPage');
+        this.setView('DataEntryPage');
       }else if(key == "event_capture"){
         console.log(key);
       }else if(key == "event_capture"){
@@ -47,11 +47,14 @@ export class AppsPage implements OnInit{
       }else if(key == "tracker_capture"){
         console.log(key);
       }else if(key == "sync"){
-        console.log(key);
+        this.setView('SyncPage')
       }else if(key == "settings"){
         console.log(key);
       }
     },150);
+  }
+  setView(viewName){
+    this.navCtrl.push(viewName).then(()=>{})
   }
 
   applyAnimation(key : any){

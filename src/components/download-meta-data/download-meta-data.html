@@ -1,0 +1,32 @@
+<!-- Generated template for the DownloadMetaDataComponent component -->
+
+<ion-grid>
+  <ion-row *ngIf="!showLoadingMessage">
+    <ion-col>
+    <button ion-button block style="text-transform: none;"
+            (tap)="autoSelect('selectAll')" > Select All</button>
+    </ion-col>
+    <ion-col>
+    <button ion-button block style="text-transform: none;"
+            (tap)="autoSelect('unSelectAll')" >Deselect All </button>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="!showLoadingMessage" >
+    <ion-col >
+      <div *ngFor="let resourceObject of resources"  >
+        <ion-item>
+          <ion-checkbox color="blue" [(ngModel)]="resourceObject.status"></ion-checkbox>
+          <ion-label> {{ resourceObject.displayName }} </ion-label>
+        </ion-item>
+      </div>
+    </ion-col>
+  </ion-row>
+
+  <span *ngIf="showLoadingMessage" > <page-loading loadingSize="large" [loadingMessage]="updateMetaDataLoadingMessages"></page-loading> </span>
+
+  <ion-row *ngIf="!showLoadingMessage">
+  <button ion-button style="text-transform: none;"
+          (tap)="checkingForResourceUpdate()"  block >Download MetaData</button>
+  </ion-row>
+</ion-grid>
+

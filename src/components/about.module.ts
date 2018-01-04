@@ -7,7 +7,7 @@ import {DataElementSyncComponent} from "./data-element-sync/data-element-sync";
 @NgModule({
   declarations: [DataSetSyncComponent, DataElementSyncComponent],
   imports: [
-    IonicModule,SharedModule,
+    IonicModule,SharedModule
   ],
   exports: [DataSetSyncComponent, DataElementSyncComponent]
 })

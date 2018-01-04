@@ -21,6 +21,7 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
       translate.setDefaultLang('en');
+      translate.use('en');
     });
   }
 }

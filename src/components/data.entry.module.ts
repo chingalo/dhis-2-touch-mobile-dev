@@ -14,6 +14,7 @@ import {ProgramStageEventBasedComponent} from "./program-stage-event-based/progr
 import {ProgramStageTrackerBasedComponent} from "./program-stage-tracker-based/program-stage-tracker-based";
 import {EventInputContainerComponent} from "./event-input-container/event-input-container";
 import {TrackerEventContainerComponent} from "./tracker-event-container/tracker-event-container";
+import {TranslateModule} from "@ngx-translate/core";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import {TrackerEventContainerComponent} from "./tracker-event-container/tracker-
     ProgramStageEventBasedComponent,ProgramStageTrackerBasedComponent,EventInputContainerComponent,TrackerEventContainerComponent
   ],
   imports: [
-    IonicModule,SharedModule,
+    IonicModule,SharedModule,TranslateModule.forChild({})
   ],
   exports: [
     OrganisationUnitTreeComponent,InputContainerComponent,TrackedEntityInputsComponent,

@@ -16,7 +16,7 @@ import {WarningComponent} from "./warning/warning";
     EmptyListNotificationComponent,HelpContentsComponent,WarningComponent,
   ],
   imports: [
-    IonicModule,
+    IonicModule
   ],
   exports: [
     ProgressBarComponent,
