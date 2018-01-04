@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
+import {AppProvider} from "../../providers/app/app";
 
 /**
  * Generated class for the AppsPage page.
@@ -16,7 +17,7 @@ export class AppsPage implements OnInit{
 
   animationEffect : any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private navCtrl: NavController, private appProvider : AppProvider) {
   }
 
   ngOnInit(){
@@ -41,9 +42,9 @@ export class AppsPage implements OnInit{
       }else if(key == "reports"){
         console.log(key);
       }else if(key == "dashboard"){
-        console.log(key);
+        this.appProvider.setNormalNotification('This has been disabled')
       }else if(key == "tracker_capture"){
-        console.log(key);
+        this.setView('TrackerCapturePage');
       }else if(key == "sync"){
         this.setView('SyncPage')
       }else if(key == "settings"){

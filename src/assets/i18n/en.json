@@ -86,6 +86,11 @@
   "deselect_all" : "Deselect all",
   "program" : "Program",
   "program_selection" : "Program selection",
+  "tracked_entity_dashboard" : "Tracked Entity Dashboard",
+  "Registration" : "Registration",
+  "enrolling_organisation_unit" : "Enrolling organisation unit",
+  "enrolling_program" : "Enrolling Program",
+  "list_of_widgets" : "List of widgets",
   "report" : "Reports",
   "help_search" : "Help search",
   "search_help_by_title" : "Search help by title",
@@ -100,6 +105,7 @@
   "event_status" : "Event status",
   "event_for_tracker_status" : "Event for tracker status",
   "enrollments" : "Enrollments",
+  "preparing_table" : "Preparing table",
   "loading_user_information" : "Loading user information",
   "loading_entry_form_information" : "Loading entry form information",
   "loading_indicators" : "Loading indicators",
@@ -119,6 +125,7 @@
   "there_is_no_data_entry_form_to_select" : "There is no Data entry form to select",
   "there_is_nothing_to_select" : "There is nothing to select",
   "there_no_data_at_the_moment" : "There no data at the moment",
-  "there_is_no_program_to_select" : "There is no program to select"
+  "there_is_no_program_to_select" : "There is no program to select",
+  "there_is_no_widget_to_select" : "There is no widget to select"
 }
 
