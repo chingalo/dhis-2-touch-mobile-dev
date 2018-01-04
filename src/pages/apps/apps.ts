@@ -37,9 +37,7 @@ export class AppsPage implements OnInit{
       if(key == "data_entry"){
         this.setView('DataEntryPage');
       }else if(key == "event_capture"){
-        console.log(key);
-      }else if(key == "event_capture"){
-        console.log(key);
+        this.setView('EventCapturePage');
       }else if(key == "reports"){
         console.log(key);
       }else if(key == "dashboard"){
@@ -51,7 +49,7 @@ export class AppsPage implements OnInit{
       }else if(key == "settings"){
         this.setView('SettingsPage');
       }
-    },150);
+    },100);
   }
   setView(viewName){
     this.navCtrl.push(viewName).then(()=>{})
@@ -61,7 +59,7 @@ export class AppsPage implements OnInit{
     this.animationEffect[key] = "animated bounceIn";
     setTimeout(()=>{
       this.animationEffect[key] = "";
-    },500);
+    },200);
   }
 
 }
