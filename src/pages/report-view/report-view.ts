@@ -5,6 +5,7 @@ import {UserProvider} from "../../providers/user/user";
 import {DataSetsProvider} from "../../providers/data-sets/data-sets";
 import {AppProvider} from "../../providers/app/app";
 import {StandardReportProvider} from "../../providers/standard-report/standard-report";
+import {DATABASE_STRUCTURE} from "../../constants/database-structure";
 
 /**
  * Generated class for the ReportViewPage page.
@@ -81,6 +82,7 @@ export class ReportViewPage implements OnInit{
                 date : date,
                 dataSets :dataSets
               };
+              dhis2.dataBaseStructure = DATABASE_STRUCTURE;
               this.loadReportDesignContent(this.reportId);
             },error=>{
               this.isLoading = false;
