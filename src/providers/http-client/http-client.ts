@@ -3,6 +3,7 @@ import {HTTP} from "@ionic-native/http";
 import {Http,Headers } from '@angular/http';
 import   'rxjs/add/operator/map';
 import 'rxjs/add/operator/timeout';
+import {Observable} from "rxjs/Observable";
 
 /*
   Generated class for the HttpClientProvider provider.
@@ -31,22 +32,73 @@ export class HttpClientProvider {
    * @param user
    * @returns {Promise<T>}
    */
-  get(url,user) {
+  get(url,user,resourceName?,pageSize?) {
     this.http.setRequestTimeout(this.timeOutTime);
     this.http.useBasicAuth(user.username,user.password);
     url = user.serverUrl + this.getUrlBasedOnDhisVersion(url,user);
-    return new Promise((resolve, reject)=> {
-      this.http.get(url, {}, {})
-        .then((response:any)  => {
-          resolve(response);
-        },error=>{
-          reject(error);
-        })
-        .catch(error => {
-          reject(error);
-        });
-    });
+    if(resourceName && pageSize){
+      return new Promise((resolve, reject)=> {
+        let promises = [];
+        let testUrl = user.serverUrl +"/api/25/"+resourceName+".json?fields=none&pageSize="+pageSize;
+        this.http.get(testUrl, {}, {})
+          .then((initialResponse:any)  => {
+            initialResponse = JSON.parse(initialResponse.data);
+            console.log(JSON.stringify(initialResponse.pager));
+            if(initialResponse.pager.pageCount){
+              initialResponse[resourceName] = [];
+              for(let i = 1;i <= initialResponse.pager.pageCount; i++){
+                let paginatedUrl = url + "&pageSize="+pageSize+"&page=" + i;
+                console.log(JSON.stringify(paginatedUrl));
+                promises.push(
+                  this.http.get(paginatedUrl,{}, {}).then((response : any)=>{
+                    response = JSON.parse(response.data);
+                    console.log("data " + response[resourceName].length);
+                    initialResponse[resourceName] = initialResponse[resourceName].concat(response[resourceName]);
+                  }).catch((error=>{}))
+                )
+              }
+              Observable.forkJoin(promises).subscribe(() => {
+                console.log(initialResponse[resourceName].length);
+                  resolve(initialResponse);
+                },
+                (error) => {
+                  reject(error);
+                })
+            }else{
+              this.http.get(url, {}, {})
+                .then((response:any)  => {
+                  resolve(response);
+                },error=>{
+                  reject(error);
+                })
+                .catch(error => {
+                  reject(error);
+                });
+            }
+          },error=>{
+            reject(error);
+          })
+          .catch(error => {
+            reject(error);
+          });
+      });
+    }else{
+      return new Promise((resolve, reject)=> {
+        this.http.get(url, {}, {})
+          .then((response:any)  => {
+            resolve(response);
+          },error=>{
+            reject(error);
+          })
+          .catch(error => {
+            reject(error);
+          });
+      });
+    }
+
+
   }
+
 
   /**
    *
