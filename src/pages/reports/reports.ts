@@ -35,7 +35,7 @@ export class ReportsPage implements OnInit{
   }
 
   ngOnInit(){
-    this.icons.reports = "assets/icons/reports.png";
+    this.icons.reports = "assets/icon/reports.png";
     this.loadingMessages = [];
     this.isLoading = true;
     this.reportList = [];
