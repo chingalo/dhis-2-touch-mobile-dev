@@ -38,6 +38,9 @@ export class LoginPage implements OnInit {
   processCount: any = {
     downloaded: 0, saved: 0, totalProcess: 6
   };
+
+
+
   cancelLoginProcessData : any = {isProcessActive : false};
   progressTracker : any;
   completedTrackedProcess : any;

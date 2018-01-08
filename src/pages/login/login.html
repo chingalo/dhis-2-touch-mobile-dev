@@ -21,7 +21,21 @@
     </ion-row>
     <ion-row *ngIf="isLoginProcessActive" [ngClass]="animationEffect.progressBar">
       <ion-col>
-        <app-features-slide></app-features-slide>
+        <!--<ion-list>-->
+          <!--<ion-item>-->
+            <!--<p>Downloading Metadata</p>-->
+            <!--<ion-avatar item-end>-->
+              <!--{{ processCount.downloaded}}/{{processCount.totalProcess}}-->
+            <!--</ion-avatar>-->
+          <!--</ion-item>-->
+          <!--<ion-item>-->
+            <!--<p>Saving Metadata</p>-->
+            <!--<ion-avatar item-end>-->
+              <!--{{ processCount.saved}}/{{processCount.totalProcess}}-->
+            <!--</ion-avatar>-->
+          <!--</ion-item>-->
+        <!--</ion-list>-->
+        <page-loading [loadingSize]="'large'" [loadingMessage]="'Please wait ...'" ></page-loading>
       </ion-col>
     </ion-row>
 
