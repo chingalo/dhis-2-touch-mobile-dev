@@ -131,15 +131,15 @@ export class LoginPage implements OnInit {
                     this.sqlLite.generateTables(this.currentUser.currentDatabase).then(()=>{
                       this.updateProgressTracker(resource);
                       this.downloadingOrganisationUnits(userData);
-                      // this.downloadingDataSets();
-                      // this.downloadingSections();
-                      // this.downloadingDataElements();
-                      // this.downloadingSmsCommands();
-                      // this.downloadingPrograms();
-                      // this.downloadingProgramStageSections();
-                      // this.downloadingIndicators();
-                      // this.downloadingStandardReports();
-                      //this.downloadingConstants();
+                      this.downloadingDataSets();
+                      this.downloadingSections();
+                      this.downloadingDataElements();
+                      this.downloadingSmsCommands();
+                      this.downloadingPrograms();
+                      this.downloadingProgramStageSections();
+                      this.downloadingIndicators();
+                      this.downloadingStandardReports();
+                      this.downloadingConstants();
                     }).catch(error=>{
                       this.cancelLoginProcess(this.cancelLoginProcessData);
                       this.AppProvider.setNormalNotification('Fail to prepare local storage');
@@ -201,21 +201,6 @@ export class LoginPage implements OnInit {
       this.currentUser["userOrgUnitIds"] = orgUnitIds;
       if(this.completedTrackedProcess.indexOf(resource) > -1){
         this.updateProgressTracker(resource);
-        this.organisationUnitsProvider.downloadingOrganisationUnitsFromServer(orgUnitIds,this.currentUser).then((orgUnits:any)=>{
-          if(this.isLoginProcessActive){
-            this.organisationUnitsProvider.savingOrganisationUnitsFromServer(orgUnits,this.currentUser).then(()=>{
-              this.updateProgressTracker(resource);
-            },error=>{
-              this.cancelLoginProcess(this.cancelLoginProcessData);
-              console.log(JSON.stringify(error));
-              this.AppProvider.setNormalNotification('Fail to save organisation data.');
-            });
-          }
-        },error=>{
-          this.cancelLoginProcess(this.cancelLoginProcessData);
-          console.log(JSON.stringify(error));
-          this.AppProvider.setNormalNotification('Fail to load organisation data.');
-        });
       }else{
         this.organisationUnitsProvider.downloadingOrganisationUnitsFromServer(orgUnitIds,this.currentUser).then((orgUnits:any)=>{
           if(this.isLoginProcessActive){

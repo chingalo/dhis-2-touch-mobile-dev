@@ -21,21 +21,64 @@
     </ion-row>
     <ion-row *ngIf="isLoginProcessActive" [ngClass]="animationEffect.progressBar">
       <ion-col>
-        <!--<ion-list>-->
-          <!--<ion-item>-->
-            <!--<p>Downloading Metadata</p>-->
-            <!--<ion-avatar item-end>-->
-              <!--{{ processCount.downloaded}}/{{processCount.totalProcess}}-->
-            <!--</ion-avatar>-->
-          <!--</ion-item>-->
-          <!--<ion-item>-->
-            <!--<p>Saving Metadata</p>-->
-            <!--<ion-avatar item-end>-->
-              <!--{{ processCount.saved}}/{{processCount.totalProcess}}-->
-            <!--</ion-avatar>-->
-          <!--</ion-item>-->
-        <!--</ion-list>-->
-        <page-loading [loadingSize]="'large'" [loadingMessage]="'Please wait ...'" ></page-loading>
+        <ion-list>
+          <ion-item>
+            <div style="text-align: center" item-left >
+              <div *ngIf="progressTracker.communication.passStepCount == progressTracker.communication.count">
+                <ion-icon name="done-all" color="favorite"></ion-icon>
+              </div>
+              <div *ngIf="progressTracker.communication.passStepCount != progressTracker.communication.count">
+                <page-loading loadingSize="small"></page-loading>
+              </div>
+            </div>
+            <span >Establishing connection to server</span>
+            <div style="text-align: center" item-right >
+              {{ progressTracker.communication.passStepCount}}/{{ progressTracker.communication.count}}
+            </div>
+          </ion-item>
+          <ion-item>
+            <div style="text-align: center" item-left >
+              <div *ngIf="progressTracker.entryForm.passStepCount == progressTracker.entryForm.count">
+                <ion-icon name="done-all" color="favorite"></ion-icon>
+              </div>
+              <div *ngIf="progressTracker.entryForm.passStepCount != progressTracker.entryForm.count">
+                <page-loading loadingSize="small"></page-loading>
+              </div>
+            </div>
+            <span >Aggregate metadata</span>
+            <div style="text-align: center" item-right >
+              {{ progressTracker.entryForm.passStepCount}}/{{ progressTracker.entryForm.count}}
+            </div>
+          </ion-item>
+          <ion-item>
+            <div style="text-align: center" item-left >
+              <div *ngIf="progressTracker.event.passStepCount == progressTracker.event.count">
+                <ion-icon name="done-all" color="favorite"></ion-icon>
+              </div>
+              <div *ngIf="progressTracker.event.passStepCount != progressTracker.event.count">
+                <page-loading loadingSize="small"></page-loading>
+              </div>
+            </div>
+            <span >Event & tracker metadata</span>
+            <div style="text-align: center" item-right >
+              {{ progressTracker.event.passStepCount}}/{{ progressTracker.event.count}}
+            </div>
+          </ion-item>
+          <ion-item>
+            <div style="text-align: center" item-left >
+              <div *ngIf="progressTracker.report.passStepCount == progressTracker.report.count">
+                <ion-icon name="done-all" color="favorite"></ion-icon>
+              </div>
+              <div *ngIf="progressTracker.report.passStepCount != progressTracker.report.count">
+                <page-loading loadingSize="small"></page-loading>
+              </div>
+            </div>
+            <span >Report metadata</span>
+            <div style="text-align: center" item-right >
+              {{ progressTracker.report.passStepCount}}/{{ progressTracker.report.count}}
+            </div>
+          </ion-item>
+        </ion-list>
       </ion-col>
     </ion-row>
 
