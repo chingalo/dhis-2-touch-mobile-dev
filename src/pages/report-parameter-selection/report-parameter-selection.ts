@@ -128,6 +128,7 @@ export class ReportParameterSelectionPage implements OnInit{
     let parameter = {
       id : this.reportId,
       name : this.reportName,
+      reportType : this.params.get('reportType'),
       period : (this.reportParams.paramReportingPeriod && this.selectedPeriod && this.selectedPeriod.name ) ? this.selectedPeriod : null,
       organisationUnit : (this.reportParams.paramOrganisationUnit && this.selectedOrgUnit && this.selectedOrgUnit.id )? this.selectedOrgUnit : null,
       organisationUnitChildren :[]

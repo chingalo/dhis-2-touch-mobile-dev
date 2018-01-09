@@ -37,9 +37,19 @@
         </ion-col>
       </ion-row>
 
-      <ion-row >
+      <ion-row>
         <ion-col>
-          <div class="reportView" [innerHTML]="_htmlMarkup"></div>
+          <div *ngIf="reportType && reportType == 'dataSetReport'">
+            <data-set-report
+              [dataSetId]="reportId"
+              [selectedOrganisationUnit]="selectedOrganisationUnit"
+              [selectedPeriod] = "selectedPeriod"></data-set-report>
+          </div>
+          <div *ngIf="reportType && reportType == 'standardReport'">
+            <div class="reportView" [innerHTML]="_htmlMarkup"></div>
+          </div>
+
+
         </ion-col>
       </ion-row>
 
