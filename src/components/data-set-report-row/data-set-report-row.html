@@ -1,0 +1,24 @@
+
+<table class="table table-bordered" width="100%" >
+  <thead>
+  <tr>
+    <th [attr.colspan]="dataElement.categoryCombo.categoryOptionCombos.length" (click)="showTooltips(dataElement,'')">
+      {{fieldLabelKey}}
+    </th>
+  </tr>
+  <tr *ngIf="dataElement.categoryCombo.name !='default'" >
+    <th *ngFor="let categoryOptionCombo of dataElement.categoryCombo.categoryOptionCombos" class="inputLabel" >
+      {{  categoryOptionCombo.name }}
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <th *ngFor="let categoryOptionCombo of dataElement.categoryCombo.categoryOptionCombos" >
+      <div class="input-field-container">
+        0
+      </div>
+    </th>
+  </tr>
+  </tbody>
+</table>

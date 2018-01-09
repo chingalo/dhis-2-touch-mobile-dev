@@ -40,10 +40,13 @@
       <ion-row>
         <ion-col>
           <div *ngIf="reportType && reportType == 'dataSetReport'">
-            <data-set-report
-              [dataSetId]="reportId"
-              [selectedOrganisationUnit]="selectedOrganisationUnit"
-              [selectedPeriod] = "selectedPeriod"></data-set-report>
+            <div class="reportView">
+              <data-set-report
+                [dataSetId]="reportId"
+                [currentUser]="currentUser"
+                [selectedOrganisationUnit]="selectedOrganisationUnit"
+                [selectedPeriod] = "selectedPeriod"></data-set-report>
+            </div>
           </div>
           <div *ngIf="reportType && reportType == 'standardReport'">
             <div class="reportView" [innerHTML]="_htmlMarkup"></div>
