@@ -27,6 +27,7 @@ export class DataSetReportComponent implements OnInit{
   sectionIds : any;
   appSettings : any;
   entryFormSections : any;
+  dataElementDataValuesMapper : any;
 
   constructor(private appProvider : AppProvider,
               private settingsProvider : SettingsProvider,
@@ -36,6 +37,7 @@ export class DataSetReportComponent implements OnInit{
 
   ngOnInit(){
     this.isLoading = true;
+    this.dataElementDataValuesMapper = {};
     if(this.currentUser){
       this.settingsProvider.getSettingsForTheApp(this.currentUser).then((appSettings:any)=>{
         this.appSettings = appSettings;
@@ -45,14 +47,19 @@ export class DataSetReportComponent implements OnInit{
           this.sectionIds = dataSetInformation.sectionIds;
           this.loadingMessage = "prepare_data_set_report";
           this.dataEntryFormProvider.getEntryForm(this.sectionIds,this.dataSet.id,this.appSettings,this.currentUser).then((entryFormSections : any)=>{
-            if(this.sectionIds.length == 0){
-              entryFormSections.forEach((section : any)=>{
+            entryFormSections.forEach((section : any)=>{
+              if(this.sectionIds.length == 0){
                 section.name = "";
-              })
-            }
-            console.log(JSON.stringify(entryFormSections));
+              }
+              section.dataElements.forEach((dataElement : any)=>{
+                this.dataElementDataValuesMapper[dataElement.id] = [];
+              });
+            });
             this.entryFormSections = entryFormSections;
-            this.dataSetReportProvider.getDataSetReportValues(this.selectedOrganisationUnit,this.dataSetId).then((response: any)=>{
+            this.dataSetReportProvider.getReportValues(this.selectedOrganisationUnit,this.dataSetId,this.selectedPeriod.iso,this.currentUser).then((dataValuesResponse: any)=>{
+              dataValuesResponse.forEach((dataValue : any)=>{
+                this.dataElementDataValuesMapper[dataValue.de].push(dataValue);
+              });
               this.isLoading = false;
             }).catch(error=>{
               this.isLoading = false;

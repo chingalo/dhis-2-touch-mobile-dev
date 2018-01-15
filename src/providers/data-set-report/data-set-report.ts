@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {SqlLiteProvider} from "../sql-lite/sql-lite";
 
 /*
   Generated class for the DataSetReportProvider provider.
@@ -9,19 +10,55 @@ import {Injectable} from '@angular/core';
 @Injectable()
 export class DataSetReportProvider {
 
-  constructor() {
+  constructor(private sqlLite : SqlLiteProvider) {
   }
 
-  getDataSetReportValues(orgUnit,dataSet,dataDimension?){
-    return new Promise((resolve,reject)=>{
-      resolve();
+  getReportValues(orgUnit,dataSetId,period,currentUser,dataDimension?){
+    let orgUnitId = orgUnit.id;
+    let resourceName = "dataValues";
+    let query = this.getQueryForDataValuesByPeriodAndDataSet(dataSetId,period,dataDimension);
+    let entryFormDataValuesFromStorage = [];
+    return new Promise( (resolve, reject)=> {
+      this.sqlLite.getByUsingQuery(query,resourceName,currentUser.currentDatabase).then((dataValues:any)=> {
+        this.sqlLite.getAllDataFromTable("organisationUnits",currentUser.currentDatabase).then((organisationUnits:any)=> {
+          let OUs = [];
+          organisationUnits.forEach((organisationUnit :  any)=>{
+            if(organisationUnit && organisationUnit.path.indexOf(orgUnitId) > -1){
+              console.log(organisationUnit.name);
+              OUs.push(organisationUnit.id);
+            }
+          });
+          console.log("OUs : " + OUs);
+          dataValues.forEach((dataValue:any)=> {
+            if(dataValue && dataValue.ouOUs.indexOf(dataValue.ou) > -1){
+              entryFormDataValuesFromStorage.push({
+                id: dataValue.de + "-" + dataValue.co,
+                value: dataValue.value,
+                de : dataValue.de
+              });
+            }
+          });
+          resolve(entryFormDataValuesFromStorage)
+        }, error=> {
+          console.log(JSON.stringify(error));
+          reject();
+        });
+      }, error=> {
+        console.log(JSON.stringify(error));
+        reject();
+      });
     });
   }
 
-  getDataSetReportOrganisationUnitIds(selectedOrganisationUnit) {
-    let organisationUnitIds = [];
-    console.log(selectedOrganisationUnit.path.split(selectedOrganisationUnit.id));
+  getQueryForDataValuesByPeriodAndDataSet(dataSetId,period,dataDimension?){
+    let query = "SELECT co,de,value,ou FROM dataValues WHERE dataSetId ='" + dataSetId + "'";
+    query += " AND pe = '"+period+"';";
+    return query;
+  }
 
+  getQueryDataValuesOrganisationUnits(){
+    let query = "SELECT id,path FROM organisationUnits;";
+    return query;
   }
 
 }

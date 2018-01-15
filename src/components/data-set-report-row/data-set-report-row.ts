@@ -14,6 +14,7 @@ export class DataSetReportRowComponent implements OnInit{
 
   @Input() dataElement;
   @Input() appSettings;
+  @Input() dataValues;
 
   fieldLabelKey : string;
 
