@@ -5,7 +5,6 @@ import {OrganisationUnitsProvider} from "../../providers/organisation-units/orga
 import {PeriodSelectionProvider} from "../../providers/period-selection/period-selection";
 import {PeriodSelectionPage} from "../period-selection/period-selection";
 import {ReportViewPage} from "../report-view/report-view";
-import {Observable} from "rxjs/Observable";
 import {StandardReportProvider} from "../../providers/standard-report/standard-report";
 
 /**
