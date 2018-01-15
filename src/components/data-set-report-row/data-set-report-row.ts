@@ -51,14 +51,13 @@ export class DataSetReportRowComponent implements OnInit{
       if(!categoryComboValues[dataValue.co]){
         categoryComboValues[dataValue.co] = [];
       }
-      categoryComboValues[dataValue.co].push(dataValue.value);
     });
 
     if(dataElement.categoryCombo.categoryOptionCombos && dataElement.categoryCombo.categoryOptionCombos && dataElement.categoryCombo.categoryOptionCombos){
       dataElement.categoryCombo.categoryOptionCombos.forEach((categoryOptionCombo : any)=>{
         let id = dataElement.id + "-" +categoryOptionCombo.id;
         let values = categoryComboValues[categoryOptionCombo.id];
-        if(validAggregatedTypes.indexOf(dataElement.valueType)){
+        if(validAggregatedTypes.indexOf(dataElement.valueType) > -1){
           this.dataObject[id] = this.getAggregatedValue(values,dataElement.aggregationType);
         }else{
           if(values && values.length > 0){
@@ -73,7 +72,7 @@ export class DataSetReportRowComponent implements OnInit{
 
   getAggregatedValue(values,aggregationType){
     let aggregatedValue = 0;
-    if(values && values > 0){
+    if(values && values.length > 0){
       if(aggregationType == "SUM"){
         values.forEach((value )=>{
           aggregatedValue += parseFloat(value);

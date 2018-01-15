@@ -28,7 +28,8 @@ export class DataSetReportProvider {
             }
           });
           dataValues.forEach((dataValue:any)=> {
-            if(dataValue && dataValue.ou && orgUnitIdsFilter.indexOf(dataValue.ou) > -1){
+            console.log(dataValue.ou + " : " +orgUnitIdsFilter.indexOf(dataValue.ou));
+            if(dataValue && orgUnitIdsFilter.indexOf(dataValue.ou) > -1){
               entryFormDataValuesFromStorage.push({
                 id: dataValue.de + "-" + dataValue.co,
                 value: dataValue.value,
@@ -49,14 +50,16 @@ export class DataSetReportProvider {
     });
   }
 
+  /**
+   *
+   * @param dataSetId
+   * @param period
+   * @param dataDimension
+   * @returns {string}
+   */
   getQueryForDataValuesByPeriodAndDataSet(dataSetId,period,dataDimension?){
     let query = "SELECT co,de,value,ou FROM dataValues WHERE dataSetId ='" + dataSetId + "'";
     query += " AND pe = '"+period+"';";
-    return query;
-  }
-
-  getQueryDataValuesOrganisationUnits(){
-    let query = "SELECT id,path FROM organisationUnits;";
     return query;
   }
 
