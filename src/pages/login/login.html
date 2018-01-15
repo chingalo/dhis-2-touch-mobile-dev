@@ -66,10 +66,10 @@
           </ion-item>
           <ion-item>
             <div style="text-align: center" item-left >
-              <div *ngIf="hasUserAuthenticated && progressTracker.report.passStepCount == progressTracker.report.count">
+              <div *ngIf="progressTracker.report.passStepCount == progressTracker.report.count">
                 <ion-icon name="done-all" color="favorite"></ion-icon>
               </div>
-              <div *ngIf="progressTracker.report.passStepCount != progressTracker.report.count">
+              <div *ngIf="hasUserAuthenticated && progressTracker.report.passStepCount != progressTracker.report.count">
                 <page-loading loadingSize="small"></page-loading>
               </div>
             </div>
