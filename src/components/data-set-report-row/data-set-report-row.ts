@@ -16,11 +16,14 @@ export class DataSetReportRowComponent implements OnInit{
   @Input() appSettings;
   @Input() dataValues;
 
+
   fieldLabelKey : string;
+  dataObject : any;
 
   constructor() { }
 
   ngOnInit(){
+    this.dataObject = {};
     if(this.dataElement && this.dataElement.displayName){
       this.fieldLabelKey = this.dataElement.displayName;
       let dataEntrySettings = this.appSettings.entryForm;
@@ -29,6 +32,7 @@ export class DataSetReportRowComponent implements OnInit{
           this.fieldLabelKey = this.dataElement[dataEntrySettings.label];
         }
       }
+      this.setReportValues(this.dataValues,this.dataElement);
     }
   }
 
@@ -38,6 +42,59 @@ export class DataSetReportRowComponent implements OnInit{
       label += " " + categoryOptionComboName;
     }
     return label;
+  }
+
+  setReportValues(dataValues,dataElement){
+    let validAggregatedTypes = ['INTEGER_NEGATIVE','INTEGER_POSITIVE','INTEGER','NUMBER','INTEGER_ZERO_OR_POSITIVE'];
+    let categoryComboValues = {};
+    dataValues.forEach((dataValue : any)=>{
+      if(!categoryComboValues[dataValue.co]){
+        categoryComboValues[dataValue.co] = [];
+      }
+      categoryComboValues[dataValue.co].push(dataValue.value);
+    });
+
+    if(dataElement.categoryCombo.categoryOptionCombos && dataElement.categoryCombo.categoryOptionCombos && dataElement.categoryCombo.categoryOptionCombos){
+      dataElement.categoryCombo.categoryOptionCombos.forEach((categoryOptionCombo : any)=>{
+        let id = dataElement.id + "-" +categoryOptionCombo.id;
+        let values = categoryComboValues[categoryOptionCombo.id];
+        if(validAggregatedTypes.indexOf(dataElement.valueType)){
+          this.dataObject[id] = this.getAggregatedValue(values,dataElement.aggregationType);
+        }else{
+          if(values && values.length > 0){
+            this.dataObject[id] = values[0];
+          }else{
+            this.dataObject[id] = "";
+          }
+        }
+      });
+    }
+  }
+
+  getAggregatedValue(values,aggregationType){
+    let aggregatedValue = 0;
+    if(values && values > 0){
+      if(aggregationType == "SUM"){
+        values.forEach((value )=>{
+          aggregatedValue += parseFloat(value);
+        });
+      }else if(aggregationType == "AVERAGE"){
+        let sum = 0;
+        values.forEach((value )=>{
+          sum += parseFloat(value);
+        });
+        aggregatedValue = sum/values.length;
+      }else{
+        console.log("aggregationType : " +aggregationType);
+        //@todo calculate based on aggregation types for other apart of SUM, AVERAGE,
+        //assume using operations
+        values.forEach((value )=>{
+          aggregatedValue += parseFloat(value);
+        });
+      }
+
+    }
+    return aggregatedValue;
   }
 
 }

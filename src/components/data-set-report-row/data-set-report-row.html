@@ -15,7 +15,7 @@
   <tbody>
   <tr>
     <th *ngFor="let categoryOptionCombo of dataElement.categoryCombo.categoryOptionCombos" >
-      {{ dataValues|json }}
+      {{ dataObject[dataElement.id + "-" + categoryOptionCombo.id] }}
     </th>
   </tr>
   </tbody>

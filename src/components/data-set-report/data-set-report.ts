@@ -3,6 +3,7 @@ import {AppProvider} from "../../providers/app/app";
 import {DataSetReportProvider} from "../../providers/data-set-report/data-set-report";
 import {DataEntryFormProvider} from "../../providers/data-entry-form/data-entry-form";
 import {SettingsProvider} from "../../providers/settings/settings";
+import {DataElementsProvider} from "../../providers/data-elements/data-elements";
 
 /**
  * Generated class for the DataSetReportComponent component.
@@ -60,6 +61,8 @@ export class DataSetReportComponent implements OnInit{
               dataValuesResponse.forEach((dataValue : any)=>{
                 this.dataElementDataValuesMapper[dataValue.de].push(dataValue);
               });
+
+
               this.isLoading = false;
             }).catch(error=>{
               this.isLoading = false;
