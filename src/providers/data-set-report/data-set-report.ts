@@ -32,7 +32,8 @@ export class DataSetReportProvider {
               entryFormDataValuesFromStorage.push({
                 id: dataValue.de + "-" + dataValue.co,
                 value: dataValue.value,
-                de : dataValue.de
+                de : dataValue.de,
+                co : dataValue.co
               });
             }
           });
