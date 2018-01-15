@@ -21,16 +21,14 @@ export class DataSetReportProvider {
     return new Promise( (resolve, reject)=> {
       this.sqlLite.getByUsingQuery(query,resourceName,currentUser.currentDatabase).then((dataValues:any)=> {
         this.sqlLite.getAllDataFromTable("organisationUnits",currentUser.currentDatabase).then((organisationUnits:any)=> {
-          let OUs = [];
+          let orgUnitIdsFilter = [];
           organisationUnits.forEach((organisationUnit :  any)=>{
             if(organisationUnit && organisationUnit.path.indexOf(orgUnitId) > -1){
-              console.log(organisationUnit.name);
-              OUs.push(organisationUnit.id);
+             orgUnitIdsFilter.push(organisationUnit.id);
             }
           });
-          console.log("OUs : " + OUs);
           dataValues.forEach((dataValue:any)=> {
-            if(dataValue && dataValue.ouOUs.indexOf(dataValue.ou) > -1){
+            if(dataValue && dataValue.ou && orgUnitIdsFilter.indexOf(dataValue.ou) > -1){
               entryFormDataValuesFromStorage.push({
                 id: dataValue.de + "-" + dataValue.co,
                 value: dataValue.value,
