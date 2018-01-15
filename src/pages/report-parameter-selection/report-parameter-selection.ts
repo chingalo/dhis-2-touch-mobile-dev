@@ -35,6 +35,7 @@ export class ReportParameterSelectionPage implements OnInit{
   reportPeriodType : any;
   currentPeriodOffset : number = 0;
   isAllReportParameterSet : boolean;
+  openFuturePeriods : any;
 
   constructor( private user: UserProvider, private modalCtrl : ModalController, private params: NavParams,private navCtrl: NavController,
                private organisationUnitsProvider: OrganisationUnitsProvider, private periodSelectionProvider: PeriodSelectionProvider,
@@ -46,6 +47,7 @@ export class ReportParameterSelectionPage implements OnInit{
     this.icons.period = "assets/icon/period.png";
     this.icons.report = "assets/icon/reports.png";
     this.isAllReportParameterSet = false;
+    this.openFuturePeriods = this.params.get("openFuturePeriods");
     this.reportName = this.params.get('name');
     this.reportId = this.params.get("id");
     this.reportParams = this.params.get("reportParams");
@@ -54,7 +56,7 @@ export class ReportParameterSelectionPage implements OnInit{
       this.currentUser = user;
       this.organisationUnitsProvider.getLastSelectedOrganisationUnitUnit(user).then((lastSelectedOrgunit)=>{
         this.selectedOrgUnit = lastSelectedOrgunit;
-        let periods = this.periodSelectionProvider.getPeriods(this.reportPeriodType,1,this.currentPeriodOffset);
+        let periods = this.periodSelectionProvider.getPeriods(this.reportPeriodType,this.openFuturePeriods,this.currentPeriodOffset);
         if(periods && periods.length > 0){
           this.selectedPeriod = periods[0];
         }
@@ -95,7 +97,7 @@ export class ReportParameterSelectionPage implements OnInit{
       let modal = this.modalCtrl.create('PeriodSelectionPage',{
         periodType: this.reportPeriodType ,
         currentPeriodOffset : this.currentPeriodOffset,
-        openFuturePeriods: 1,
+        openFuturePeriods: this.openFuturePeriods,
         currentPeriod : this.selectedPeriod,
       });
       modal.onDidDismiss((response:any) => {

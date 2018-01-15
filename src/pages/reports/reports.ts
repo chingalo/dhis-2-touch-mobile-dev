@@ -61,7 +61,12 @@ export class ReportsPage implements OnInit{
 
   selectReport(report){
     let parameter = {
-      id : report.id,reportType : report.type,name : report.name, reportParams:report.reportParams, relativePeriods:report.relativePeriods
+      id : report.id,
+      reportType : report.type,
+      name : report.name,
+      openFuturePeriods : report.openFuturePeriods,
+      reportParams:report.reportParams,
+      relativePeriods:report.relativePeriods
     };
     if(this.standardReportProvider.hasReportRequireParameterSelection(report.reportParams)){
       this.navCtrl.push('ReportParameterSelectionPage',parameter);

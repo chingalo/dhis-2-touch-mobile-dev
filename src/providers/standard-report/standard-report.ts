@@ -146,6 +146,7 @@ export class StandardReportProvider {
       this.SqlLite.getAllDataFromTable(this.resource,currentUser.currentDatabase).then((reports : any)=>{
         reports.forEach((report : any)=>{
           report.type = "standardReport";
+          report.openFuturePeriods = 1;
           reportList.push(report);
         });
         this.SqlLite.getAllDataFromTable(dataSetsReportResourceName,currentUser.currentDatabase).then((dataSets : any)=>{
@@ -153,6 +154,7 @@ export class StandardReportProvider {
             reportList.push({
               id : dataSet.id,name : dataSet.name,reportParams : reportParams,
               type : "dataSetReport",
+              openFuturePeriods : dataSet.openFuturePeriods,
               relativePeriods : {dataSetPeriodType : dataSet.periodType}
             });
           });

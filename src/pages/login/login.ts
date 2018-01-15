@@ -44,7 +44,7 @@ export class LoginPage implements OnInit {
   cancelLoginProcessData : any = {isProcessActive : false};
   progressTracker : any;
   completedTrackedProcess : any;
-
+  hasUserAuthenticated : boolean;
   currentResourceType : string;
 
   constructor(public navCtrl: NavController,
@@ -91,6 +91,7 @@ export class LoginPage implements OnInit {
   }
 
   startLoginProcess() {
+    this.hasUserAuthenticated = false;
     this.progressBar = "0";
     this.processCount.downloaded = 0;
     this.processCount.saved = 0;
@@ -130,6 +131,7 @@ export class LoginPage implements OnInit {
                     resource = "Preparing local storage";
                     this.sqlLite.generateTables(this.currentUser.currentDatabase).then(()=>{
                       this.updateProgressTracker(resource);
+                      this.hasUserAuthenticated = true;
                       this.downloadingOrganisationUnits(userData);
                       this.downloadingDataSets();
                       this.downloadingSections();
