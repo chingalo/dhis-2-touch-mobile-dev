@@ -109,11 +109,14 @@
           </ion-col>
         </ion-row>
       </form>
+
+      <div *ngIf="localInstances && localInstances.length > 0">
+        <button (click)="openAvailableLocalInstance()">local</button>
+      </div>
+
     </div>
 
-    <div >
-      <button (click)="openAvailableLocalInstance()">local</button>
-    </div>
+
 
     <ion-row>
       <ion-col class="bottomSLogan">

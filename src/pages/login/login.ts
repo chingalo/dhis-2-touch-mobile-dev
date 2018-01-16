@@ -16,6 +16,7 @@ import {HttpClientProvider} from "../../providers/http-client/http-client";
 import {ProgramsProvider} from "../../providers/programs/programs";
 import {ProgramStageSectionsProvider} from "../../providers/program-stage-sections/program-stage-sections";
 import {BackgroundMode} from "@ionic-native/background-mode";
+import {LocalInstanceProvider} from "../../providers/local-instance/local-instance";
 
 /**
  * Generated class for the LoginPage page.
@@ -39,14 +40,12 @@ export class LoginPage implements OnInit {
   processCount: any = {
     downloaded: 0, saved: 0, totalProcess: 6
   };
-
-
-
   cancelLoginProcessData : any = {isProcessActive : false};
   progressTracker : any;
   completedTrackedProcess : any;
   hasUserAuthenticated : boolean;
   currentResourceType : string;
+  localInstances : any;
 
   constructor(public navCtrl: NavController,
               private UserProvider : UserProvider,
@@ -63,7 +62,8 @@ export class LoginPage implements OnInit {
               private programsProvider: ProgramsProvider,
               private programStageSectionProvider: ProgramStageSectionsProvider,
               private backgroundMode: BackgroundMode,
-              private modalCtrl : ModalController
+              private modalCtrl : ModalController,private localInstanceProvider : LocalInstanceProvider,
+
   ) {
 
   }
@@ -79,27 +79,32 @@ export class LoginPage implements OnInit {
     this.progressTracker = {};
     this.completedTrackedProcess = [];
     this.UserProvider.getCurrentUser().then((currentUser: any)=>{
-      if(currentUser && currentUser.serverUrl){
-        if(currentUser.password){
-          delete currentUser.password;
+      this.localInstanceProvider.getLocalInstances().then((localInstances : any)=>{
+        this.localInstances = localInstances;
+        if(currentUser && currentUser.serverUrl){
+          if(currentUser.password){
+            delete currentUser.password;
+          }
+          this.currentUser = currentUser;
+        }else{
+          this.currentUser = {
+            serverUrl: "play.hisptz.org/27",
+            username: "admin",
+            password: "district"
+          };
         }
-        this.currentUser = currentUser;
-      }else{
-        this.currentUser = {
-          serverUrl: "play.hisptz.org/27",
-          username: "admin",
-          password: "district"
-        };
-      }
+      });
     });
   }
 
   openAvailableLocalInstance(){
-    let modal = this.modalCtrl.create('AvailableLocalInstancePage',{},{ cssClass: 'inset-modal' });
-    modal.onDidDismiss((response : any)=>{
-      console.log(response)
-    });
-    modal.present();
+    this.navCtrl.push('AvailableLocalInstancePage');
+
+    // let modal = this.modalCtrl.create('AvailableLocalInstancePage',{},{ cssClass: 'inset-modal' });
+    // modal.onDidDismiss((response : any)=>{
+    //   console.log(response)
+    // });
+    // modal.present();
   }
 
 
@@ -493,8 +498,9 @@ export class LoginPage implements OnInit {
   setLandingPage(currentUser){
     currentUser.isLogin = true;
     this.reCheckingAppSetting(currentUser);
+    this.localInstanceProvider.setLocalInstanceInstances(this.localInstances,currentUser,this.loggedInInInstance).then(()=>{});
     this.UserProvider.setCurrentUser(currentUser).then(()=>{
-      this.navCtrl.setRoot(TabsPage)
+      this.navCtrl.setRoot(TabsPage);
     });
   }
 

@@ -1,19 +1,30 @@
 <ion-header>
   <ion-navbar color="primary">
     <ion-title>{{'available_local_instance'|translate }}</ion-title>
-    <ion-buttons end>
-      <button class="normalButton" ion-button text-capitalize full large (tap)="dismiss()">
-        <ion-icon name="close"></ion-icon>
-      </button>
-    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 
-<ion-content >
+<ion-content padding>
 
-  here we are on list of database available
+  <ion-searchbar animated="true"autocomplete="on"  (ionInput)="getFilteredList($event)"></ion-searchbar>
+  <ion-grid>
+    <ion-row>
+      <ion-col >
+        <ion-list>
+          <ion-item *ngFor="let localInstance of localInstances" (tap)="setSelectedDataSet(dataSet)">
+            <img  class="side-menu-icon" [src]="icon"/>&nbsp;&nbsp;
+            <span  ion-text [color]="(false) ?'current' : 'font-color'">{{ localInstance.name }}</span>
+          </ion-item>
+          <ion-item *ngIf = "localInstances.length == 0">
+            <empty-list-notification [emptyListMessage]="'there_is_no_local_instance_to_select'|translate"></empty-list-notification>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>
 <ion-footer color="primary">
+  ggf
 </ion-footer>
