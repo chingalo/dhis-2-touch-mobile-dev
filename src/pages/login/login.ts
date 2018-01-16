@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { NavController} from 'ionic-angular';
+import {ModalController, NavController} from 'ionic-angular';
 import {TabsPage} from "../tabs/tabs";
 import {UserProvider} from "../../providers/user/user";
 import {AppProvider} from "../../providers/app/app";
@@ -62,7 +62,8 @@ export class LoginPage implements OnInit {
               private HttpClientProvider : HttpClientProvider,
               private programsProvider: ProgramsProvider,
               private programStageSectionProvider: ProgramStageSectionsProvider,
-              private backgroundMode: BackgroundMode
+              private backgroundMode: BackgroundMode,
+              private modalCtrl : ModalController
   ) {
 
   }
@@ -92,6 +93,16 @@ export class LoginPage implements OnInit {
       }
     });
   }
+
+  openAvailableLocalInstance(){
+    let modal = this.modalCtrl.create('AvailableLocalInstancePage',{},{ cssClass: 'inset-modal' });
+    modal.onDidDismiss((response : any)=>{
+      console.log(response)
+    });
+    modal.present();
+  }
+
+
 
   startLoginProcess() {
     this.hasUserAuthenticated = false;
