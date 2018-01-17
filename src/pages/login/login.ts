@@ -40,16 +40,13 @@ export class LoginPage implements OnInit {
   isLoginProcessActive: boolean;
   currentUser: any = {};
   animationEffect: any = {};
-
   cancelLoginProcessData : any = {isProcessActive : false};
   progressTracker : any;
   completedTrackedProcess : any;
   hasUserAuthenticated : boolean;
   currentResourceType : string;
   localInstances : any;
-
   currentLanguage : string;
-
   isLocalInstancesListOpen : boolean;
 
   constructor(public navCtrl: NavController,
@@ -134,6 +131,7 @@ export class LoginPage implements OnInit {
       this.currentLanguage = language;
       this.currentUser.currentLanguage = language;
       this.UserProvider.setCurrentUser(this.currentUser).then(()=>{});
+      this.localInstanceProvider.setLocalInstanceInstances(this.localInstances,this.currentUser,this.loggedInInInstance).then(()=>{});
     }catch (e){
       this.AppProvider.setNormalNotification("Fail to set translation ");
       console.log(JSON.stringify(e));
