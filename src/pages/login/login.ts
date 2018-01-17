@@ -17,6 +17,7 @@ import {ProgramsProvider} from "../../providers/programs/programs";
 import {ProgramStageSectionsProvider} from "../../providers/program-stage-sections/program-stage-sections";
 import {BackgroundMode} from "@ionic-native/background-mode";
 import {LocalInstanceProvider} from "../../providers/local-instance/local-instance";
+import {AppTranslationProvider} from "../../providers/app-translation/app-translation";
 
 /**
  * Generated class for the LoginPage page.
@@ -47,7 +48,7 @@ export class LoginPage implements OnInit {
   currentResourceType : string;
   localInstances : any;
 
-
+  currentLang : string;
 
   isLocalInstancesListOpen : boolean;
 
@@ -67,12 +68,14 @@ export class LoginPage implements OnInit {
               private programStageSectionProvider: ProgramStageSectionsProvider,
               private backgroundMode: BackgroundMode,
               private localInstanceProvider : LocalInstanceProvider,
+              private appTranslationProvider : AppTranslationProvider
 
   ) {
 
   }
 
   ngOnInit() {
+    this.currentLang = this.appTranslationProvider.getCurrentLanguage();
     this.isLocalInstancesListOpen = false;
     this.backgroundMode.disable();
     this.animationEffect = {
@@ -120,6 +123,15 @@ export class LoginPage implements OnInit {
     this.isLocalInstancesListOpen = !this.isLocalInstancesListOpen;
   }
 
+  updateTranslationLanguage(lang : string){
+    try{
+      this.appTranslationProvider.setAppTranslation(lang);
+      this.currentLang = lang;
+    }catch (e){
+      this.AppProvider.setNormalNotification("Fail to set translation ");
+      console.log(JSON.stringify(e));
+    }
+  }
 
   startLoginProcess() {
     this.hasUserAuthenticated = false;

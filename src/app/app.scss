@@ -227,11 +227,20 @@ ion-modal.inset-modal {
   margin-bottom:2%;
 }
 
-.bottomSLogan p{
+.bottom-sLogan-title{
   font-style: italic;
   color: #ffffff;
   text-transform: lowercase;
   font-size: 0.8rem;
+}
+
+.translation-codes{
+  color: #ffffff;
+  text-transform: lowercase;
+}
+
+.translation-codes span{
+  padding: 2px;
 }
 
 .apps-contents{

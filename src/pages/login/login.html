@@ -150,7 +150,7 @@
         </form>
         <div *ngIf="localInstances && localInstances.length > 1">
           <div class="strike">
-            <span >OR</span>
+            <span >{{'or'|translate}}</span>
           </div>
           <button ion-button block clear color="light" text-capitalize (click)="toggleLoginFormAndLocalInstances()" >
             <img  class="side-menu-icon" [src]="offlineIcon"/>&nbsp;&nbsp;
@@ -160,11 +160,21 @@
       </div>
     </div>
 
-
-
     <ion-row>
       <ion-col class="bottomSLogan">
-        <p>{{'powered_by'|translate}} HISPTZ</p>
+
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="bottomSLogan">
+        <p>
+          <span class="translation-codes">
+          <span (click)="updateTranslationLanguage('en')" [ngClass]="(currentLang == 'en') ?'currentLang' : ''">en&nbsp;|&nbsp;</span>
+          <span (click)="updateTranslationLanguage('fr')" [ngClass]="(currentLang == 'fr') ?'currentLang' : ''">fr&nbsp;|&nbsp;</span>
+          <span (click)="updateTranslationLanguage('pt')"[ngClass]="(currentLang == 'pt') ?'currentLang' : ''">pt</span>
+        </span>
+        </p>
+        <p><span class="bottom-sLogan-title">{{'powered_by'|translate}} HISPTZ </span></p>
       </ion-col>
     </ion-row>
   </ion-grid>
