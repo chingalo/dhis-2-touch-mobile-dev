@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Storage } from '@ionic/storage';
 import {SqlLiteProvider} from "../sql-lite/sql-lite";
 
 

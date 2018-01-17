@@ -32,6 +32,8 @@ import {LocalInstanceProvider} from "../../providers/local-instance/local-instan
 export class LoginPage implements OnInit {
 
   logoUrl: string;
+  offlineIcon : string;
+  cancelIcon : string;
   progressBar: string;
   loggedInInInstance: string;
   isLoginProcessActive: boolean;
@@ -46,6 +48,8 @@ export class LoginPage implements OnInit {
   hasUserAuthenticated : boolean;
   currentResourceType : string;
   localInstances : any;
+
+  isLocalInstancesListOpen : boolean;
 
   constructor(public navCtrl: NavController,
               private UserProvider : UserProvider,
@@ -62,51 +66,59 @@ export class LoginPage implements OnInit {
               private programsProvider: ProgramsProvider,
               private programStageSectionProvider: ProgramStageSectionsProvider,
               private backgroundMode: BackgroundMode,
-              private modalCtrl : ModalController,private localInstanceProvider : LocalInstanceProvider,
+              private localInstanceProvider : LocalInstanceProvider,
 
   ) {
 
   }
 
   ngOnInit() {
+    this.isLocalInstancesListOpen = false;
     this.backgroundMode.disable();
     this.animationEffect = {
       loginForm: "animated slideInUp",
       progressBar: "animated fadeIn"
     };
     this.logoUrl = 'assets/img/logo.png';
+    this.offlineIcon = "assets/icon/offline.png";
+    this.cancelIcon = "assets/icon/cancel.png";
     this.cancelLoginProcess(this.cancelLoginProcessData);
     this.progressTracker = {};
     this.completedTrackedProcess = [];
     this.UserProvider.getCurrentUser().then((currentUser: any)=>{
       this.localInstanceProvider.getLocalInstances().then((localInstances : any)=>{
         this.localInstances = localInstances;
-        if(currentUser && currentUser.serverUrl){
-          if(currentUser.password){
-            delete currentUser.password;
-          }
-          this.currentUser = currentUser;
-        }else{
-          this.currentUser = {
-            serverUrl: "play.hisptz.org/27",
-            username: "admin",
-            password: "district"
-          };
-        }
+        this.setUpCurrentUser(currentUser);
       });
     });
   }
 
-  openAvailableLocalInstance(){
-    this.navCtrl.push('AvailableLocalInstancePage');
-
-    // let modal = this.modalCtrl.create('AvailableLocalInstancePage',{},{ cssClass: 'inset-modal' });
-    // modal.onDidDismiss((response : any)=>{
-    //   console.log(response)
-    // });
-    // modal.present();
+  setUpCurrentUser(currentUser){
+    if(currentUser && currentUser.serverUrl){
+      if(currentUser.password){
+        delete currentUser.password;
+      }
+      this.currentUser = currentUser;
+    }else{
+      this.currentUser = {
+        serverUrl: "play.hisptz.org/27",
+        username: "admin",
+        password: "district"
+      };
+    }
   }
 
+  changeCurrentUser(data){
+    if(data && data.currentUser){
+      this.setUpCurrentUser(data.currentUser)
+    }
+    this.toggleLoginFormAndLocalInstances();
+
+  }
+
+  toggleLoginFormAndLocalInstances(){
+    this.isLocalInstancesListOpen = !this.isLocalInstancesListOpen;
+  }
 
 
   startLoginProcess() {
