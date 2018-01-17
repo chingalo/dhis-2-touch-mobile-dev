@@ -18,7 +18,6 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
       appTranslationProvider.setAppTranslation();
-
       this.rootPage = LauncherPage;
     });
   }

@@ -169,9 +169,9 @@
       <ion-col class="bottomSLogan">
         <p>
           <span class="translation-codes">
-          <span (click)="updateTranslationLanguage('en')" [ngClass]="(currentLang == 'en') ?'currentLang' : ''">en&nbsp;|&nbsp;</span>
-          <span (click)="updateTranslationLanguage('fr')" [ngClass]="(currentLang == 'fr') ?'currentLang' : ''">fr&nbsp;|&nbsp;</span>
-          <span (click)="updateTranslationLanguage('pt')"[ngClass]="(currentLang == 'pt') ?'currentLang' : ''">pt</span>
+          <span (click)="updateTranslationLanguage('en')" [ngClass]="(currentLanguage == 'en') ?'currentLang' : ''">en</span>&nbsp;|&nbsp;
+          <span (click)="updateTranslationLanguage('fr')" [ngClass]="(currentLanguage == 'fr') ?'currentLang' : ''">fr</span>&nbsp;|&nbsp;
+          <span (click)="updateTranslationLanguage('pt')"[ngClass]="(currentLanguage == 'pt') ?'currentLang' : ''">pt</span>
         </span>
         </p>
         <p><span class="bottom-sLogan-title">{{'powered_by'|translate}} HISPTZ </span></p>

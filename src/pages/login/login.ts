@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ModalController, NavController} from 'ionic-angular';
+import { NavController} from 'ionic-angular';
 import {TabsPage} from "../tabs/tabs";
 import {UserProvider} from "../../providers/user/user";
 import {AppProvider} from "../../providers/app/app";
@@ -48,7 +48,7 @@ export class LoginPage implements OnInit {
   currentResourceType : string;
   localInstances : any;
 
-  currentLang : string;
+  currentLanguage : string;
 
   isLocalInstancesListOpen : boolean;
 
@@ -75,7 +75,6 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
-    this.currentLang = this.appTranslationProvider.getCurrentLanguage();
     this.isLocalInstancesListOpen = false;
     this.backgroundMode.disable();
     this.animationEffect = {
@@ -101,14 +100,20 @@ export class LoginPage implements OnInit {
       if(currentUser.password){
         delete currentUser.password;
       }
+      if(!currentUser.currentLanguage){
+        currentUser.currentLanguage = "en";
+      }
       this.currentUser = currentUser;
     }else{
       this.currentUser = {
         serverUrl: "play.hisptz.org/27",
         username: "admin",
-        password: "district"
+        password: "district",
+        currentLanguage : "en"
       };
     }
+    this.currentLanguage = this.currentUser.currentLanguage;
+    this.appTranslationProvider.setAppTranslation(this.currentUser.currentLanguage);
   }
 
   changeCurrentUser(data){
@@ -123,10 +128,11 @@ export class LoginPage implements OnInit {
     this.isLocalInstancesListOpen = !this.isLocalInstancesListOpen;
   }
 
-  updateTranslationLanguage(lang : string){
+  updateTranslationLanguage(language : string){
     try{
-      this.appTranslationProvider.setAppTranslation(lang);
-      this.currentLang = lang;
+      this.appTranslationProvider.setAppTranslation(language);
+      this.currentLanguage = language;
+      this.currentUser.currentLanguage = language;
     }catch (e){
       this.AppProvider.setNormalNotification("Fail to set translation ");
       console.log(JSON.stringify(e));
@@ -554,6 +560,11 @@ export class LoginPage implements OnInit {
   cancelLoginProcess(data) {
     this.animationEffect.progressBar = "animated fadeOut";
     this.animationEffect.loginForm = "animated fadeIn";
+    if(this.currentUser && this.currentUser.serverUrl){
+      let url = this.currentUser.serverUrl.split("/dhis-web-commons")[0];
+      url = url.split("/dhis-web-dashboard-integration")[0];
+      this.currentUser.serverUrl = url;
+    }
     setTimeout(() => {
       this.isLoginProcessActive = data.isProcessActive;
     }, 300);

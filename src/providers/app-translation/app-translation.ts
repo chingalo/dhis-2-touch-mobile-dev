@@ -12,20 +12,22 @@ export class AppTranslationProvider {
 
   constructor(private translateService : TranslateService) {}
 
-  test(){
-    console.log("getDefaultLang : " + this.translateService.getDefaultLang());
-  }
-
+  /**
+   *
+   * @param {string} lang
+   */
   setAppTranslation(lang?: string){
-    this.test();
     if(!lang){
       lang = this.getCurrentLanguage();
     }
     this.translateService.setDefaultLang(lang);
     this.translateService.use(lang);
-    this.test();
   }
 
+  /**
+   *
+   * @returns {string}
+   */
   getCurrentLanguage(){
     let lang = "en";
     if(this.translateService.getDefaultLang()){
