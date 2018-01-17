@@ -31,10 +31,10 @@
                 <page-loading loadingSize="small"></page-loading>
               </div>
             </div>
-            <span *ngIf="progressTracker.communication.message !=''">
+            <span text-wrap *ngIf="progressTracker.communication.message !=''">
               {{ progressTracker.communication.message|translate}}
             </span>
-            <span *ngIf="progressTracker.communication.message ==''">
+            <span text-wrap *ngIf="progressTracker.communication.message ==''">
               {{'establishing_connection_to_server'|translate}}
             </span>
             <div style="text-align: center" item-right >
@@ -50,10 +50,10 @@
                 <page-loading loadingSize="small"></page-loading>
               </div>
             </div>
-            <span *ngIf="progressTracker.entryForm.message !=''">
+            <span text-wrap *ngIf="progressTracker.entryForm.message !=''">
               {{ progressTracker.entryForm.message|translate}}
             </span>
-            <span *ngIf="progressTracker.entryForm.message ==''">
+            <span text-wrap *ngIf="progressTracker.entryForm.message ==''">
               {{'aggregate_metadata'|translate}}
             </span>
             <div style="text-align: center" item-right >
@@ -61,7 +61,7 @@
             </div>
           </ion-item>
           <ion-item>
-            <div style="text-align: center" item-left >
+            <div style="text-align: center" item-left  >
               <div *ngIf="progressTracker.event.passStepCount == progressTracker.event.count">
                 <ion-icon name="done-all" color="favorite"></ion-icon>
               </div>
@@ -69,10 +69,10 @@
                 <page-loading loadingSize="small"></page-loading>
               </div>
             </div>
-            <span *ngIf="progressTracker.event.message !=''">
+            <span text-wrap *ngIf="progressTracker.event.message !=''">
               {{ progressTracker.event.message|translate}}
             </span>
-            <span *ngIf="progressTracker.event.message ==''">
+            <span text-wrap *ngIf="progressTracker.event.message ==''">
               {{'Event_and_tracker_metadata'|translate}}
             </span>
             <div style="text-align: center" item-right >
@@ -88,10 +88,10 @@
                 <page-loading loadingSize="small"></page-loading>
               </div>
             </div>
-            <span *ngIf="progressTracker.report.message !=''">
+            <span text-wrap *ngIf="progressTracker.report.message !=''">
               {{ progressTracker.report.message|translate}}
             </span>
-            <span *ngIf="progressTracker.report.message ==''">
+            <span text-wrap *ngIf="progressTracker.report.message ==''">
               {{'report_metadata'|translate }}
             </span>
             <div style="text-align: center" item-right >
