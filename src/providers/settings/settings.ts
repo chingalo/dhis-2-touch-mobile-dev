@@ -21,7 +21,8 @@ export class SettingsProvider {
   getSettingContentDetails(){
     let settingContents = [
       {id : 'synchronization',name : 'synchronization',icon: 'assets/icon/synchronization.png',isLoading : false,loadingMessage: ''},
-      {id : 'entryForm',name : 'entry_form',icon: 'assets/icon/form.png',isLoading : false,loadingMessage: ''}
+      {id : 'entryForm',name : 'entry_form',icon: 'assets/icon/form.png',isLoading : false,loadingMessage: ''},
+      {id : 'appSettings',name : 'app_settings',icon: 'assets/icon/app-setting.png',isLoading : false,loadingMessage: ''}
     ];
     return settingContents;
   }
