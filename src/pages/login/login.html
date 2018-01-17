@@ -31,7 +31,12 @@
                 <page-loading loadingSize="small"></page-loading>
               </div>
             </div>
-            <span >Establishing connection to server</span>
+            <span *ngIf="progressTracker.communication.message !=''">
+              {{ progressTracker.communication.message|translate}}
+            </span>
+            <span *ngIf="progressTracker.communication.message ==''">
+              Establishing connection to server
+            </span>
             <div style="text-align: center" item-right >
               {{ progressTracker.communication.passStepCount}}/{{ progressTracker.communication.count}}
             </div>
@@ -45,7 +50,12 @@
                 <page-loading loadingSize="small"></page-loading>
               </div>
             </div>
-            <span >Aggregate metadata</span>
+            <span *ngIf="progressTracker.entryForm.message !=''">
+              {{ progressTracker.entryForm.message|translate}}
+            </span>
+            <span *ngIf="progressTracker.entryForm.message ==''">
+              Aggregate metadata
+            </span>
             <div style="text-align: center" item-right >
               {{ progressTracker.entryForm.passStepCount}}/{{ progressTracker.entryForm.count}}
             </div>
@@ -59,7 +69,12 @@
                 <page-loading loadingSize="small"></page-loading>
               </div>
             </div>
-            <span >Event & tracker metadata</span>
+            <span *ngIf="progressTracker.event.message !=''">
+              {{ progressTracker.event.message|translate}}
+            </span>
+            <span *ngIf="progressTracker.event.message ==''">
+              Event & tracker metadata
+            </span>
             <div style="text-align: center" item-right >
               {{ progressTracker.event.passStepCount}}/{{ progressTracker.event.count}}
             </div>
@@ -73,7 +88,12 @@
                 <page-loading loadingSize="small"></page-loading>
               </div>
             </div>
-            <span >Report metadata</span>
+            <span *ngIf="progressTracker.report.message !=''">
+              {{ progressTracker.report.message|translate}}
+            </span>
+            <span *ngIf="progressTracker.report.message ==''">
+              Report metadata
+            </span>
             <div style="text-align: center" item-right >
               {{ progressTracker.report.passStepCount}}/{{ progressTracker.report.count}}
             </div>
@@ -133,6 +153,7 @@
             <span >OR</span>
           </div>
           <button ion-button block clear color="light" text-capitalize (click)="toggleLoginFormAndLocalInstances()" >
+            <img  class="side-menu-icon" [src]="offlineIcon"/>&nbsp;&nbsp;
             {{'offline_instances'|translate}}
           </button>
         </div>

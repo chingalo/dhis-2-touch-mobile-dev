@@ -46,8 +46,8 @@ export class AvailableLocalInstanceComponent implements OnInit{
     let val = ev.target.value;
     this.localInstances = this.localInstancesBackup;
     if(val && val.trim() != ''){
-      this.localInstances = this.localInstances.filter((section:any) => {
-        return (section.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      this.localInstances = this.localInstances.filter((localInstance:any) => {
+        return (localInstance.name.toLowerCase().indexOf(val.toLowerCase()) > -1 || localInstance.currentUser.username.toLowerCase().indexOf(val.toLowerCase()) > -1 );
       })
     }
   }
