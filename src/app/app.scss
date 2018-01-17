@@ -225,6 +225,7 @@ ion-modal.inset-modal {
 .bottomSLogan{
   text-align: center;
   margin-bottom:2%;
+  margin-top: 0px;
 }
 
 .bottomSLogan p{
@@ -236,6 +237,40 @@ ion-modal.inset-modal {
   color: #ffffff;
   text-transform: lowercase;
   font-size: 0.8rem;
+}
+
+.circled-btn-border,
+.circled-btn {
+  -webkit-box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+  -moz-box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+  box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+}
+
+.circled-btn {
+  border-style: none;
+  cursor: pointer;
+  background-color: rgba(255,255,255,.5);
+  height: 2.2rem;
+  width: 2.2rem;
+  padding-top: 0.2rem;
+  border-radius: 50%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  -webkit-transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  -ms-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+
+.circled-btn:hover {
+  background-color: rgba(241, 241, 241,.6);
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -o-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .translation-codes{

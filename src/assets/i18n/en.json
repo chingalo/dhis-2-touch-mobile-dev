@@ -96,6 +96,8 @@
   "enrolling_program" : "Enrolling Program",
   "list_of_widgets" : "List of widgets",
   "report" : "Reports",
+  "data_set_report" : "Data set report",
+  "standard_report" : "Standard report",
   "report_name" : "Report name",
   "report_view":"Report View",
   "generate_report" : "Generate Report",
