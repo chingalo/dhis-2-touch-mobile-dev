@@ -128,7 +128,7 @@
   "loading_data_from_the_server" : "Loading data from the server",
   "saving_data_from_server" : "Saving data from server",
   "loading_current_user_authorities" : "Loading current user authorities",
-  "prepare_local_storage" : "Preparing local storage",
+  "preparing_local_storage" : "Preparing local storage",
   "loading_assigned_organisation_units" : "Loading assigned organisation units",
   "assigned_organisation_units_have_been_loaded" :"Assigned organisation units have been loaded",
   "assigned_organisation_units_have_been_saved" :"Assigned organisation units have been saved",
